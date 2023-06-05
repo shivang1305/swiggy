@@ -75,3 +75,14 @@
   height: 400px;
   background-color: #f0f0f0;
 }
+
+.footer > ul {
+  font-size: 18px;
+  display: flex;
+  list-style-type: none;
+}
+
+.footer > ul > li {
+  padding: 10px;
+  margin: 10px;
+}

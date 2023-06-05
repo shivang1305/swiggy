@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/shivang1305/namaste-react/tree/master#readme",
   "dependencies": {
+    "lucide-react": "^0.233.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.11.2"
   },
   "devDependencies": {
     "parcel": "^2.8.3",
