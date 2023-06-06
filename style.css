@@ -1,3 +1,5 @@
+/* HEADER CSS START */
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -28,21 +30,9 @@
   width: 100px;
 }
 
-.res-container {
-  display: flex;
-  flex-wrap: wrap;
-}
+/* HEADER CSS END */
 
-.res-card {
-  margin: 5px 5px;
-  padding: 5px;
-  width: 200px;
-}
-
-.res-card:hover {
-  cursor: pointer;
-  border: 1px solid black;
-}
+/* NAVBAR CSS START */
 
 .nav-bar {
   display: flex;
@@ -59,9 +49,59 @@
   cursor: pointer;
 }
 
-.res-logo {
-  width: 100%;
+/* NAVBAR CSS END */
+
+/* RESTAURANT CSS START */
+
+.restaurant-container {
+  display: flex;
+  flex-wrap: wrap;
 }
+
+.restaurant-card {
+  margin: 30px 30px;
+  background-color: #fff;
+  padding: 5px;
+  width: 300px;
+  color: black;
+  text-decoration: none;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.restaurant-card:hover {
+  cursor: pointer;
+  border: 0.1px solid grey;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Restaurant Image */
+.restaurant-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Restaurant Name */
+.restaurant-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.restaurant-cuisines {
+  font-size: 15px;
+}
+
+.restaurant-card-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* RESTAURANT CSS END */
+
+/* RESTAURANTS PAGE SHIMMER UI CSS START */
 
 .shimmer-container {
   display: flex;
@@ -69,12 +109,177 @@
 }
 
 .shimmer-card {
-  margin: 5px 5px;
+  margin: 30px 30px;
   padding: 5px;
-  width: 200px;
-  height: 400px;
+  width: 250px;
+  height: 350px;
   background-color: #f0f0f0;
 }
+
+/* RESTAURANTS PAGE SHIMMER UI CSS END */
+
+/* RESTAURANT MENU SHIMMER UI CSS START */
+
+/* Shimmer Item */
+.shimmer-item {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+}
+
+/* Shimmer Item Image */
+.shimmer-item-image {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  background-color: #eee;
+}
+
+/* Shimmer Item Details */
+.shimmer-item-details {
+  margin-top: 16px;
+}
+
+/* Shimmer Item Name */
+.shimmer-item-name {
+  height: 20px;
+  width: 80%;
+  margin-bottom: 8px;
+  background-color: #eee;
+}
+
+/* Shimmer Item Description */
+.shimmer-item-description {
+  height: 16px;
+  width: 60%;
+  margin-bottom: 8px;
+  background-color: #eee;
+}
+
+/* Shimmer Item Price */
+.shimmer-item-price {
+  height: 16px;
+  width: 40%;
+  margin-bottom: 8px;
+  background-color: #eee;
+}
+
+/* Shimmer Item Button */
+.shimmer-item-button {
+  height: 32px;
+  width: 120px;
+  background-color: #eee;
+}
+
+/* RESTAURANT MENU SHIMMER UI CSS END */
+
+/* RESTAURANT MENU CSS START */
+
+.restaurant-nested-header-1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.restaurant-nested-header-2 {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.restaurant-delivery-time {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.restaurant-cost {
+  font-weight: bold;
+  font-size: 18px;
+  margin-left: 25px;
+}
+
+.restaurant-rating-box {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 0.1px solid grey;
+  align-items: center;
+}
+
+/* Restaurant Menu Page Container */
+.restaurant-menu-page {
+  padding: 24px;
+  background-color: #f5f5f5;
+}
+
+/* Restaurant Menu Heading */
+.restaurant-name-heading {
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+/* Menu Item */
+.menu-item {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  display: flex;
+}
+
+/* Menu Item Image */
+.menu-item-image {
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Menu Item Details */
+.menu-item-details {
+  margin-top: 16px;
+  margin-left: 50px;
+}
+
+/* Menu Item Name */
+.menu-item-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+/* Menu Item Description */
+.menu-item-description {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+/* Menu Item Price */
+.menu-item-price {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+/* Menu Item Button */
+.menu-item-button {
+  background-color: #f9b934;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.menu-item-button:hover {
+  background-color: #e89700;
+}
+
+/* RESTAURANT MENU CSS END */
+
+/* FOOTER CSS START */
 
 .footer > ul {
   font-size: 18px;
@@ -86,3 +291,5 @@
   padding: 10px;
   margin: 10px;
 }
+
+/* FOOTER CSS END */

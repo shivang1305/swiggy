@@ -1,7 +1,8 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
-import Shimmer from "./Shimmer";
+import RestaurantsPageShimmer from "./shimmerUI/RestaurantsPageShimmer";
 import { Link } from "react-router-dom";
+import { ALL_RESTAURANTS_API } from "../utils/constants";
 
 const Body = () => {
   const [allRestaurantData, setAllRestaurantData] = useState([]);
@@ -14,9 +15,7 @@ const Body = () => {
 
   // function to fetch the data
   const getAllRestaurants = async () => {
-    const data = await fetch(
-      `https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.3670355&lng=79.4304381&page_type=DESKTOP_WEB_LISTING`
-    );
+    const data = await fetch(ALL_RESTAURANTS_API);
 
     const jsonRestaurantList = await data.json();
 
@@ -45,7 +44,7 @@ const Body = () => {
 
   // conditional rendering
   return allRestaurantData.length === 0 ? (
-    <Shimmer />
+    <RestaurantsPageShimmer />
   ) : (
     <div className="body">
       <div className="nav-bar">
@@ -69,10 +68,14 @@ const Body = () => {
       {filteredRestaurants?.length === 0 ? (
         <h2>No restaurant found</h2>
       ) : (
-        <div className="res-container">
+        <div className="restaurant-container">
           {filteredRestaurants.map((resData) => {
             return (
-              <Link key={resData.data.id} to={"/restaurant/" + resData.data.id}>
+              <Link
+                style={{ textDecoration: "none" }}
+                key={resData.data.id}
+                to={"/restaurant/" + resData.data.id}
+              >
                 <RestaurantCard resData={resData} />
               </Link>
             );

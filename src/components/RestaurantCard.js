@@ -7,7 +7,7 @@ const styleCard = {
 
 const RestaurantCard = (props) => {
   const { resData } = props;
-  // destructing the data object
+  // destructuring the data object
   const {
     cloudinaryImageId,
     name,
@@ -16,18 +16,41 @@ const RestaurantCard = (props) => {
     costForTwo,
     deliveryTime,
   } = resData?.data; // optional chaining
+
+  const styleCard = {
+    // Inline styles for the restaurant card container
+    width: "300px",
+    backgroundColor: "#fff",
+    borderRadius: "8px",
+    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+    overflow: "hidden",
+  };
+
   return (
-    <div className="res-card" style={styleCard}>
+    <div className="restaurant-card" style={styleCard}>
       <img
         className="res-logo"
-        alt="res-logo"
+        alt="restaurant-logo"
         src={CDN_URL + cloudinaryImageId}
       />
-      <h3>{name}</h3>
-      <h4>{cuisines.join(", ")}</h4>
-      <h4>{avgRating} stars</h4>
-      <h4>₹{costForTwo / 100} FOR TWO</h4>
-      <h4>{deliveryTime} mins</h4>
+
+      <div className="restaurant-title-container">
+        <div className="restaurant-name">{name}</div>
+        <div className="restaurant-cuisines" title={cuisines.join(", ")}>
+          {cuisines.join(", ")}
+        </div>
+      </div>
+      <div className="restaurant-details-container">
+        <div className="restaurant-card-footer">
+          <span>{avgRating}⭐</span>
+          <div>•</div>
+          <div>{deliveryTime} MINS</div>
+          <div>• </div>
+          <div className="cost-for-two-container">
+            ₹{costForTwo / 100} FOR TWO
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
