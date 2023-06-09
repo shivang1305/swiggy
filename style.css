@@ -112,7 +112,7 @@
   margin: 30px 30px;
   padding: 5px;
   width: 250px;
-  height: 350px;
+  height: 300px;
   background-color: #f0f0f0;
 }
 
@@ -278,6 +278,39 @@
 }
 
 /* RESTAURANT MENU CSS END */
+
+/* CONTACT US PAGE CSS START */
+.contact-form {
+  margin: 50px 50px;
+}
+.contact-label {
+  display: flex;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.contact-input {
+  margin-bottom: 15px;
+  height: 30px;
+  width: 50%;
+}
+
+.contact-textarea {
+  margin-bottom: 15px;
+  width: 50%;
+}
+
+.contact-button {
+  display: flex;
+  font-weight: bold;
+}
+
+.contact-form-error {
+  display: flex;
+  color: red;
+}
+/* CONTACT US PAGE CSS END */
 
 /* FOOTER CSS START */
 

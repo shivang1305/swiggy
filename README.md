@@ -24,6 +24,4 @@
 
 - Login/Signup Form using Formik
 - Authentication using JWT
-- About & Contact us Page - Formik Forms
-- Shimmer UI for Restaurant Info
-- UI for Restaurant Info
+- About Page
