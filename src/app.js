@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Footer from "./components/Footer";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
+import ProfileClass from "./components/ProfileClass";
 
 const AppLayout = () => {
   return (
@@ -32,6 +33,12 @@ const appRouter = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+        children: [
+          {
+            path: "profile", // no '/' is needed here as if we put "/profile" it will be treated as "localhost:1234/profile" instead of "localhost:1234/about/profile"
+            element: <ProfileClass name="Shivang" />,
+          },
+        ],
       },
       {
         path: "/contact",
