@@ -1,5 +1,5 @@
 const RestaurantsPageShimmer = () => {
-  const shimmerItems = Array.from({ length: 9 }, (_, index) => index);
+  const shimmerItems = Array.from({ length: 15 }, (_, index) => index);
 
   return (
     <div className="shimmer-container">

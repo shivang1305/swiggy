@@ -25,7 +25,7 @@ class About extends React.Component {
     return (
       <div>
         <h1>About Us Page</h1>
-        <Profile />
+        <Profile pageName="Profile Page" />
       </div>
     );
   }

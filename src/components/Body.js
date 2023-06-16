@@ -2,28 +2,11 @@ import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import RestaurantsPageShimmer from "./shimmerUI/RestaurantsPageShimmer";
 import { Link } from "react-router-dom";
-import { ALL_RESTAURANTS_API } from "../utils/constants";
+import useAllRestaurants from "../utils/useAllRestaurants";
 
 const Body = () => {
-  const [allRestaurantData, setAllRestaurantData] = useState([]);
-  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
-
-  useEffect(() => {
-    getAllRestaurants();
-  }, []);
-
-  // function to fetch the data
-  const getAllRestaurants = async () => {
-    const data = await fetch(ALL_RESTAURANTS_API);
-
-    const jsonRestaurantList = await data.json();
-
-    let restaurantData = jsonRestaurantList?.data?.cards[2]?.data?.data?.cards; // optional chaining
-
-    setAllRestaurantData(restaurantData);
-    setFilteredRestaurants(restaurantData);
-  };
+  const [allRestaurantData, filteredRestaurants] = useAllRestaurants([]);
 
   // to search for restaurants
   const searchRestaurants = () => {

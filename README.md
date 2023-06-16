@@ -24,4 +24,3 @@
 
 - Login/Signup Form using Formik
 - Authentication using JWT
-- About Page

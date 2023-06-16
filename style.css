@@ -1,5 +1,25 @@
 /* HEADER CSS START */
 
+.internet-connection-section-offline {
+  width: 30%;
+  margin-left: 35%;
+  display: flex;
+  justify-content: center;
+  background-color: #cad5e2;
+  color: #242b2e;
+  font-size: 18px;
+}
+
+.internet-connection-section-online {
+  width: 30%;
+  margin-left: 35%;
+  display: flex;
+  justify-content: center;
+  background-color: #1faa59;
+  color: #242b2e;
+  font-size: 18px;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
