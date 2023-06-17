@@ -6,7 +6,8 @@ import useAllRestaurants from "../utils/useAllRestaurants";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
-  const [allRestaurantData, filteredRestaurants] = useAllRestaurants([]);
+  const [allRestaurantData, filteredRestaurants, setFilteredRestaurants] =
+    useAllRestaurants([]);
 
   // to search for restaurants
   const searchRestaurants = () => {
@@ -21,7 +22,7 @@ const Body = () => {
     let highRatedRestaurants = allRestaurantData.filter(
       (res) => res.data.avgRating > 4
     );
-    console.log(highRatedRestaurants);
+    // console.log(highRatedRestaurants);
     setFilteredRestaurants(highRatedRestaurants);
   };
 

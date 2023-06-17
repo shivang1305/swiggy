@@ -21,7 +21,7 @@ const useAllRestaurants = () => {
     setFilteredRestaurants(restaurantData);
   };
 
-  return [allRestaurantData, filteredRestaurants];
+  return [allRestaurantData, filteredRestaurants, setFilteredRestaurants];
 };
 
 export default useAllRestaurants;
