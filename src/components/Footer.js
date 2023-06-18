@@ -3,15 +3,15 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="footer-container">
-      <hr className="my-8" />
-      <div className="mx-auto flex max-w-6xl flex-col items-start space-x-8 md:flex-row">
+      <hr />
+      <div>
         <div className="footer">
-          <ul className="flex flex-col space-y-4 text-[14px] font-medium text-gray-500">
-            <li>About us</li>
-            <li>Company History</li>
-            <li>Our Team</li>
-            <li>Our Vision</li>
-            <li>Press Release</li>
+          <ul className="flex list-none text-lg font-medium text-gray-500">
+            <li className="p-3 m-3">About us</li>
+            <li className="p-3 m-3">Company History</li>
+            <li className="p-3 m-3">Our Team</li>
+            <li className="p-3 m-3">Our Vision</li>
+            <li className="p-3 m-3">Press Release</li>
           </ul>
         </div>
       </div>

@@ -15,7 +15,11 @@ const OnlineSection = () => {
   return (
     <div>
       {isVisible && (
-        <div className="internet-connection-section-online">Back Online</div>
+        <div className="flex justify-center">
+          <div className="flex justify-center bg-green-400 text-gray-600 w-1/3 text-lg">
+            Back Online
+          </div>
+        </div>
       )}
     </div>
   );

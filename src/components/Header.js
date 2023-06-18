@@ -18,25 +18,25 @@ const Header = () => {
     <div>
       {!isOnline && <OfflineSection />}
       {isOnline && <OnlineSection />}
-      <div className="header">
+      <div className="flex justify-between border-2 border-black">
         <div className="logo-container">
-          <img className="logo" src={LOGO_URL} />
+          <img className="w-52" src={LOGO_URL} />
         </div>
-        <div className="nav-items">
-          <ul>
-            <li>
+        <div className="py-5">
+          <ul className="text-2xl flex list-none">
+            <li className="p-5">
               <Link to="/">Home</Link>
             </li>
-            <li>
+            <li className="p-5">
               <Link to="/about">About</Link>
             </li>
-            <li>
+            <li className="p-5">
               <Link to="/contact">Contact</Link>
             </li>
-            <li>Signup</li>
-            <li>Cart</li>
+            <li className="p-5">Signup</li>
+            <li className="p-5">Cart</li>
             <li>
-              <button className="login-btn" onClick={toggleButton}>
+              <button className="p-5 mr-3 h-12 w-24" onClick={toggleButton}>
                 {btnLabel}
               </button>
             </li>

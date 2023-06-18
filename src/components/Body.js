@@ -31,19 +31,22 @@ const Body = () => {
     <RestaurantsPageShimmer />
   ) : (
     <div className="body">
-      <div className="nav-bar">
+      <div className="flex m-7 mx-16 justify-between">
         <div className="search">
           <input
-            className="search-input"
+            className="border-black border-2 rounded-lg p-1"
             placeholder="Restaurant, Dish, Cuisine"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           ></input>
-          <button className="search-btn" onClick={searchRestaurants}>
+          <button
+            className="ml-3 cursor-pointer border-black border-2 rounded-lg p-1 bg-slate-300"
+            onClick={searchRestaurants}
+          >
             Search
           </button>
         </div>
-        <div className="filter">
+        <div className="ml-3 cursor-pointer border-black border-2 rounded-lg p-1 bg-slate-300">
           <button className="filter-btn" onClick={filterRestaurants}>
             Top Rated Restaurants
           </button>
@@ -52,7 +55,7 @@ const Body = () => {
       {filteredRestaurants?.length === 0 ? (
         <h2>No restaurant found</h2>
       ) : (
-        <div className="restaurant-container">
+        <div className="flex flex-wrap justify-center">
           {filteredRestaurants.map((resData) => {
             return (
               <Link

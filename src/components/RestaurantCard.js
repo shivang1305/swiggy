@@ -18,30 +18,25 @@ const RestaurantCard = (props) => {
   } = resData?.data; // optional chaining
 
   const styleCard = {
-    // Inline styles for the restaurant card container
-    width: "300px",
-    backgroundColor: "#fff",
-    borderRadius: "8px",
     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-    overflow: "hidden",
   };
 
   return (
-    <div className="restaurant-card" style={styleCard}>
+    <div className="w-80 mx-8 my-8 bg-white text-black rounded-lg overflow-hidden shadow hover:cursor-pointer hover:border-rose-100 hover:border-2">
       <img
-        className="res-logo"
+        className="w-full h-52 object-cover"
         alt="restaurant-logo"
         src={CDN_URL + cloudinaryImageId}
       />
 
-      <div className="restaurant-title-container">
-        <div className="restaurant-name">{name}</div>
-        <div className="restaurant-cuisines" title={cuisines.join(", ")}>
+      <div className="p-2">
+        <div className="text-xl font-bold mb-2">{name}</div>
+        <div className="text-base" title={cuisines.join(", ")}>
           {cuisines.join(", ")}
         </div>
       </div>
-      <div className="restaurant-details-container">
-        <div className="restaurant-card-footer">
+      <div className="p-2">
+        <div className="mt-5 flex justify-between">
           <span>{avgRating}⭐</span>
           <div>•</div>
           <div>{deliveryTime} MINS</div>

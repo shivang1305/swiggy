@@ -27,72 +27,75 @@ const Contact = () => {
         alert(JSON.stringify(values));
       }}
     >
-      <Form className="contact-form">
-        <label className="contact-label" htmlFor="name">
+      <Form className="mx-14 my-14">
+        <label className="flex mb-1 font-semibold text-lg" htmlFor="name">
           Name
         </label>
 
         <Field
-          className="contact-input"
+          className="mb-4 p-1 h-8 w-1/2 border-solid border-black border-2"
           id="name"
           name="name"
           type="text"
           placeholder="Enter your name"
         />
 
-        <div className="contact-form-error">
+        <div className="flex text-red-500 p-0">
           <ErrorMessage name="name" />
         </div>
 
-        <label className="contact-label" htmlFor="email">
+        <label className="flex mb-1 font-semibold text-lg" htmlFor="email">
           Email
         </label>
 
         <Field
-          className="contact-input"
+          className="mb-4 p-1 h-8 w-1/2 border-solid border-black border-2"
           id="email"
           name="email"
           type="email"
           placeholder="Enter your email"
         />
 
-        <div className="contact-form-error">
+        <div className="flex text-red-500">
           <ErrorMessage name="email" />
         </div>
 
-        <label className="contact-label" htmlFor="phone">
+        <label className="flex mb-1 font-semibold text-lg" htmlFor="phone">
           Phone Number
         </label>
 
         <Field
-          className="contact-input"
+          className="mb-4 p-1 h-8 w-1/2 border-solid border-black border-2"
           id="phone"
           name="phone"
           type="text"
           placeholder="Enter your phone number"
         />
 
-        <div className="contact-form-error">
+        <div className="flex text-red-500">
           <ErrorMessage name="phone" />
         </div>
 
-        <label className="contact-label" htmlFor="message">
+        <label className="flex mb-1 font-semibold text-lg" htmlFor="message">
           Message
         </label>
 
         <Field
           as="textarea"
-          className="contact-textarea"
+          className="mb-4 p-1 w-1/2 border-solid border-black border-2"
           id="message"
           name="message"
           type="text"
           placeholder="Write your message"
         />
-        <div className="contact-form-error">
+        <div className="flex text-red-500">
           <ErrorMessage name="message" />
         </div>
 
-        <button className="contact-button" type="submit">
+        <button
+          className="p-2 flex font-bold rounded-md border-2 border-gray-500 bg-slate-400 text-white"
+          type="submit"
+        >
           Submit
         </button>
       </Form>

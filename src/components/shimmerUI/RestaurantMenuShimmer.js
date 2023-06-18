@@ -5,13 +5,13 @@ const RestaurantMenuShimmer = () => {
       <h2 className="restaurant-menu-heading">Menu</h2>
       <div className="shimmer-items-container">
         {shimmerItems.map((item) => (
-          <div className="shimmer-item" key={item}>
-            <div className="shimmer-item-image"></div>
-            <div className="shimmer-item-details">
-              <div className="shimmer-item-name"></div>
-              <div className="shimmer-item-description"></div>
-              <div className="shimmer-item-price"></div>
-              <div className="shimmer-item-button"></div>
+          <div className="bg-gray-200 rounded-lg shadow p-4" key={item}>
+            <div className="w-full h-52 rounded-lg bg-gray-300"></div>
+            <div className="mt-4">
+              <div className="h-5 w-3/4 mb-2 bg-gray-300"></div>
+              <div className="h-4 w-1/2 mb-2 bg-gray-300"></div>
+              <div className="h-4 w-1/2 mb-2 bg-gray-300"></div>
+              <div className="h-8 w-32 bg-gray-300"></div>
             </div>
           </div>
         ))}
