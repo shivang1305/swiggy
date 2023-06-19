@@ -33,7 +33,9 @@ const Header = () => {
             <li className="p-5">
               <Link to="/contact">Contact</Link>
             </li>
-            <li className="p-5">Signup</li>
+            <li className="p-5">
+              <Link to="/instamart">Instamart</Link>
+            </li>
             <li className="p-5">Cart</li>
             <li>
               <button className="p-5 mr-3 h-12 w-24" onClick={toggleButton}>
