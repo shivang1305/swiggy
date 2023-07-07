@@ -3,15 +3,17 @@ import { useState, useContext } from "react";
 import RestaurantsPageShimmer from "./shimmerUI/RestaurantsPageShimmer";
 import { Link } from "react-router-dom";
 import useAllRestaurants from "../utils/useAllRestaurants";
-import UserContext from "../utils/UserContext";
+import CardContext from "../utils/CardContext";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [allRestaurantData, filteredRestaurants, setFilteredRestaurants] =
     useAllRestaurants([]);
 
-  const { user, setUser } = useContext(UserContext);
-  console.log(user.name);
+  const [card, setCard] = useState({
+    name: "haldirams",
+    rating: "3.9 stars",
+  });
 
   // to search for restaurants
   const searchRestaurants = () => {
@@ -50,13 +52,15 @@ const Body = () => {
             Search
           </button>
           <input
-            value={user.name}
-            onChange={(e) => {
-              setUser({
-                ...user,
+            className="border-black border-2 rounded-lg p-1"
+            placeholder="Restaurant, Dish, Cuisine"
+            value={card.name}
+            onChange={(e) =>
+              setCard({
+                ...card,
                 name: e.target.value,
-              });
-            }}
+              })
+            }
           ></input>
         </div>
         <div className="ml-3 cursor-pointer border-black border-2 rounded-lg p-1 bg-slate-300">
@@ -76,7 +80,9 @@ const Body = () => {
                 key={resData.data.id}
                 to={"/restaurant/" + resData.data.id}
               >
-                <RestaurantCard resData={resData} />
+                <CardContext.Provider value={{ card, setCard }}>
+                  <RestaurantCard resData={resData} />
+                </CardContext.Provider>
               </Link>
             );
           })}

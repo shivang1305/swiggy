@@ -15,13 +15,21 @@ const Contact = lazy(() => import("./components/Contact"));
 const About = lazy(() => import("./components/About"));
 
 const AppLayout = () => {
-  const [user, setUser] = useState({
+  const [user1, setUser1] = useState({
     name: "Shivang",
     email: "shivang@gmail.com",
   });
+  const [user2, setUser2] = useState({
+    name: "Aman",
+    email: "aman@gmail.com",
+  });
+  const [card, setCard] = useState({
+    name: "haldirams",
+    rating: "3.9 stars",
+  });
   return (
     <div className="app">
-      <UserContext.Provider value={{ user, setUser }}>
+      <UserContext.Provider value={{ user1, setUser1, user2, setUser2 }}>
         <Header />
         <Outlet />
         <Footer />
