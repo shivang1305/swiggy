@@ -1,7 +1,7 @@
 {
-  "name": "02ignition",
+  "name": "swiggy-clone",
   "version": "1.0.0",
-  "description": "",
+  "description": "- Local Server\r - Dev Build\r - HMR = Hot Module Replacement\r - File Watching Algorithm - written in C++\r - Caching - Faster Builds\r - Image Optimization\r - Minfication of file\r - Bundling of files\r - Compression of files\r - Consistent Hashing\r - Code Splitting\r - Differential Bundling - support older browsers\r - Diagnostic\r - Error Handling\r - HTTPs support\r - Tree Shaking - remove unused code\r - Different dev and prod bundles",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",
@@ -26,9 +26,10 @@
     "yup": "^1.2.0"
   },
   "devDependencies": {
-    "parcel": "^2.8.3",
+    "parcel": "^2.9.3",
     "postcss": "^8.4.24",
     "process": "^0.11.10",
     "tailwindcss": "^3.3.2"
-  }
+  },
+  "main": "tailwind.config.js"
 }

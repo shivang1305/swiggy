@@ -22,5 +22,9 @@
 
 ## TODO:
 
-- Login/Signup Form using Formik
-- Authentication using JWT
+- Filters on home page
+- Location feature on landing page
+- Improve the CSS of restaurant cards
+- Filters in restuarant menu page
+- Add to cart feature
+- Payment gateway integration feature

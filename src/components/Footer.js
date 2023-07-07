@@ -1,6 +1,8 @@
-import React from "react";
+import { useContext } from "react";
+import UserContext from "../utils/UserContext";
 
 const Footer = () => {
+  const { user } = useContext(UserContext);
   return (
     <footer className="footer-container">
       <hr />
@@ -13,6 +15,9 @@ const Footer = () => {
             <li className="p-3 m-3">Our Vision</li>
             <li className="p-3 m-3">Press Release</li>
           </ul>
+          <h1 className="p-4 font-bold text-xl ">
+            This webapp is developed by {user.name} - {user.email}
+          </h1>
         </div>
       </div>
     </footer>

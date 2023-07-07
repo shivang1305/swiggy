@@ -1,13 +1,17 @@
 import RestaurantCard from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import RestaurantsPageShimmer from "./shimmerUI/RestaurantsPageShimmer";
 import { Link } from "react-router-dom";
 import useAllRestaurants from "../utils/useAllRestaurants";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [allRestaurantData, filteredRestaurants, setFilteredRestaurants] =
     useAllRestaurants([]);
+
+  const { user, setUser } = useContext(UserContext);
+  console.log(user.name);
 
   // to search for restaurants
   const searchRestaurants = () => {
@@ -45,6 +49,15 @@ const Body = () => {
           >
             Search
           </button>
+          <input
+            value={user.name}
+            onChange={(e) => {
+              setUser({
+                ...user,
+                name: e.target.value,
+              });
+            }}
+          ></input>
         </div>
         <div className="ml-3 cursor-pointer border-black border-2 rounded-lg p-1 bg-slate-300">
           <button className="filter-btn" onClick={filterRestaurants}>
