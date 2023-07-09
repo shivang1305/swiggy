@@ -22,6 +22,7 @@
 
 ## TODO:
 
+- Theme feature using context
 - Filters on home page
 - Location feature on landing page
 - Improve the CSS of restaurant cards

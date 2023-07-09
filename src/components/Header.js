@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { LOGO_URL } from "../utils/constants";
 import useOnline from "../utils/useOnline";
@@ -36,7 +36,7 @@ const Header = () => {
             <li className="p-5">
               <Link to="/instamart">Instamart</Link>
             </li>
-            <li className="p-5">Cart</li>
+            <li className="p-5">🛒</li>
             <li>
               <button className="p-5 mr-3 h-12 w-24" onClick={toggleButton}>
                 {btnLabel}

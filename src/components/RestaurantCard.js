@@ -1,6 +1,4 @@
-import { useContext } from "react";
 import { CDN_URL } from "../utils/constants";
-import CardContext from "../utils/CardContext";
 
 // writing CSS in JSX
 const styleCard = {
@@ -9,7 +7,6 @@ const styleCard = {
 
 const RestaurantCard = (props) => {
   const { resData } = props;
-  const { card } = useContext(CardContext);
 
   // destructuring the data object
   const {
@@ -48,9 +45,6 @@ const RestaurantCard = (props) => {
           <div className="cost-for-two-container">
             ₹{costForTwo / 100} FOR TWO
           </div>
-        </div>
-        <div>
-          {card.name} - {card.rating}
         </div>
       </div>
     </div>

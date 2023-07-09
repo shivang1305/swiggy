@@ -2,8 +2,8 @@ import { useContext } from "react";
 import UserContext from "../utils/UserContext";
 
 const Footer = () => {
-  const { user2 } = useContext(UserContext);
-  user2.name = "test";
+  const { user } = useContext(UserContext);
+
   return (
     <footer className="footer-container">
       <hr />
@@ -17,7 +17,7 @@ const Footer = () => {
             <li className="p-3 m-3">Press Release</li>
           </ul>
           <h1 className="p-4 font-bold text-xl ">
-            This webapp is developed by {user2.name} - {user2.email}
+            This webapp is developed by {user.name} - {user.email}
           </h1>
         </div>
       </div>

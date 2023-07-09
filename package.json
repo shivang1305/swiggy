@@ -18,10 +18,11 @@
   },
   "homepage": "https://github.com/shivang1305/namaste-react/tree/master#readme",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
     "formik": "^2.4.1",
-    "lucide-react": "^0.233.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^8.1.1",
     "react-router-dom": "^6.11.2",
     "yup": "^1.2.0"
   },
