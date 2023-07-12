@@ -10,6 +10,9 @@ import ProfileClass from "./components/ProfileClass";
 import RestaurantMenuShimmer from "./components/shimmerUI/RestaurantMenuShimmer";
 import Instamart from "./components/Instamart";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import store from "./utils/Store";
+import Cart from "./components/Cart";
 
 const Contact = lazy(() => import("./components/Contact"));
 const About = lazy(() => import("./components/About"));
@@ -22,11 +25,13 @@ const AppLayout = () => {
 
   return (
     <div className="dark:bg-black">
-      <UserContext.Provider value={{ user, setUser }}>
-        <Header />
-        <Outlet />
-        <Footer />
-      </UserContext.Provider>
+      <Provider store={store}>
+        <UserContext.Provider value={{ user, setUser }}>
+          <Header />
+          <Outlet />
+          <Footer />
+        </UserContext.Provider>
+      </Provider>
     </div>
   );
 };
@@ -70,6 +75,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/instamart",
         element: <Instamart />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },

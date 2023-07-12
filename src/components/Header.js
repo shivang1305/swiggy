@@ -4,10 +4,14 @@ import { LOGO_URL } from "../utils/constants";
 import useOnline from "../utils/useOnline";
 import OnlineSection from "./OnlineSection";
 import OfflineSection from "./OfflineSection";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnLabel, setBtnLabel] = useState("Login");
   const isOnline = useOnline();
+
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
 
   const toggleButton = () => {
     if (btnLabel === "Login") setBtnLabel("Logout");
@@ -36,7 +40,9 @@ const Header = () => {
             <li className="p-5">
               <Link to="/instamart">Instamart</Link>
             </li>
-            <li className="p-5">🛒</li>
+            <li className="p-5">
+              <Link to="/cart">🛒{cartItems.length}</Link>
+            </li>
             <li>
               <button className="p-5 mr-3 h-12 w-24" onClick={toggleButton}>
                 {btnLabel}
