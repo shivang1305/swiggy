@@ -1,4 +1,4 @@
-# Namaste React
+# Namaste React - Swiggy
 
 ## Parcel
 
