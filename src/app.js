@@ -7,33 +7,27 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Footer from "./components/Footer";
 import RestaurantMenu from "./components/RestaurantMenu";
 import ProfileClass from "./components/ProfileClass";
-import RestaurantMenuShimmer from "./components/shimmerUI/RestaurantMenuShimmer";
 import Instamart from "./components/Instamart";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import store from "./utils/store";
 import Cart from "./components/Cart";
+import About from "./components/About";
+import Contact from "./components/Contact";
 
-const Contact = lazy(() => import("./components/Contact"));
-const About = lazy(() => import("./components/About"));
+// const Contact = lazy(() => import("./components/Contact"));
+// const About = lazy(() => import("./components/About"));
 
 const AppLayout = () => {
-  const [user1, setUser1] = useState({
+  const [user, setUser] = useState({
     name: "Shivang",
     email: "shivang@gmail.com",
   });
-  const [user2, setUser2] = useState({
-    name: "Aman",
-    email: "aman@gmail.com",
-  });
-  const [card, setCard] = useState({
-    name: "haldirams",
-    rating: "3.9 stars",
-  });
+
   return (
     <div className="app">
       <Provider store={store}>
-        <UserContext.Provider value={{ user1, setUser1, user2, setUser2 }}>
+        <UserContext.Provider value={{ user, setUser }}>
           <Header />
           <Outlet />
           <Footer />
@@ -56,9 +50,9 @@ const appRouter = createBrowserRouter([
       {
         path: "/about",
         element: (
-          <Suspense fallback={<RestaurantMenuShimmer />}>
-            <About />
-          </Suspense>
+          // <Suspense fallback={<RestaurantMenuShimmer />}>
+          <About />
+          // </Suspense>
         ),
         children: [
           {
@@ -70,9 +64,9 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: (
-          <Suspense fallback={<h3>Loading.... </h3>}>
-            <Contact />
-          </Suspense>
+          // <Suspense fallback={<h3>Loading.... </h3>}>
+          <Contact />
+          // </Suspense>
         ),
       },
       {

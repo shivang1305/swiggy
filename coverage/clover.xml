@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1690554630542" clover="3.2.0">
-  <project timestamp="1690554630542" name="All files">
-    <metrics statements="110" coveredstatements="86" conditionals="16" coveredconditionals="8" methods="41" coveredmethods="24" elements="167" coveredelements="118" complexity="0" loc="110" ncloc="110" packages="4" files="17" classes="17"/>
+<coverage generated="1690570986410" clover="3.2.0">
+  <project timestamp="1690570986411" name="All files">
+    <metrics statements="85" coveredstatements="63" conditionals="14" coveredconditionals="6" methods="31" coveredmethods="16" elements="130" coveredelements="85" complexity="0" loc="85" ncloc="85" packages="4" files="14" classes="14"/>
     <package name="components">
-      <metrics statements="52" coveredstatements="33" conditionals="16" coveredconditionals="8" methods="21" coveredmethods="9"/>
+      <metrics statements="40" coveredstatements="23" conditionals="14" coveredconditionals="6" methods="17" coveredmethods="7"/>
       <file name="Body.js" path="C:\Users\I564011\OneDrive - SAP SE\Personal\namaste-react-master\namaste-react-master\src\components\Body.js">
         <metrics statements="14" coveredstatements="6" conditionals="4" coveredconditionals="1" methods="7" coveredmethods="1"/>
         <line num="7" count="1" type="stmt"/>
-        <line num="8" count="8" type="stmt"/>
-        <line num="10" count="7" type="stmt"/>
-        <line num="13" count="7" type="stmt"/>
+        <line num="8" count="7" type="stmt"/>
+        <line num="10" count="6" type="stmt"/>
+        <line num="13" count="6" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
-        <line num="21" count="7" type="stmt"/>
+        <line num="21" count="6" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
         <line num="23" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
-        <line num="30" count="7" type="cond" truecount="1" falsecount="1"/>
+        <line num="30" count="6" type="cond" truecount="1" falsecount="1"/>
         <line num="41" count="0" type="stmt"/>
         <line num="65" count="0" type="stmt"/>
       </file>
       <file name="Header.js" path="C:\Users\I564011\OneDrive - SAP SE\Personal\namaste-react-master\namaste-react-master\src\components\Header.js">
         <metrics statements="8" coveredstatements="6" conditionals="8" coveredconditionals="3" methods="3" coveredmethods="2"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="10" count="3" type="stmt"/>
-        <line num="11" count="3" type="stmt"/>
-        <line num="13" count="3" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
         <line num="14" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="15" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="18" count="6" type="stmt"/>
-        <line num="20" count="3" type="stmt"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
       </file>
       <file name="OfflineSection.js" path="C:\Users\I564011\OneDrive - SAP SE\Personal\namaste-react-master\namaste-react-master\src\components\OfflineSection.js">
         <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="2" type="stmt"/>
+        <line num="1" count="1" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
       </file>
       <file name="OnlineSection.js" path="C:\Users\I564011\OneDrive - SAP SE\Personal\namaste-react-master\namaste-react-master\src\components\OnlineSection.js">
         <metrics statements="8" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="3"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="4" count="3" type="stmt"/>
-        <line num="6" count="3" type="stmt"/>
-        <line num="7" count="3" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
-        <line num="11" count="3" type="stmt"/>
-        <line num="12" count="3" type="stmt"/>
-        <line num="15" count="3" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
       </file>
       <file name="RestaurantCard.js" path="C:\Users\I564011\OneDrive - SAP SE\Personal\namaste-react-master\namaste-react-master\src\components\RestaurantCard.js">
         <metrics statements="7" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -58,21 +58,6 @@
         <line num="24" count="0" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
       </file>
-      <file name="RestaurantMenu.js" path="C:\Users\I564011\OneDrive - SAP SE\Personal\namaste-react-master\namaste-react-master\src\components\RestaurantMenu.js">
-        <metrics statements="12" coveredstatements="10" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="2"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="3" type="stmt"/>
-        <line num="12" count="2" type="stmt"/>
-        <line num="14" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="35" count="1" type="stmt"/>
-        <line num="58" count="6" type="stmt"/>
-        <line num="80" count="0" type="stmt"/>
-      </file>
       <file name="sum.js" path="C:\Users\I564011\OneDrive - SAP SE\Personal\namaste-react-master\namaste-react-master\src\components\sum.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
@@ -82,97 +67,78 @@
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="data.js" path="C:\Users\I564011\OneDrive - SAP SE\Personal\namaste-react-master\namaste-react-master\src\components\mocks\data.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="6804" count="2" type="stmt"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="6804" count="1" type="stmt"/>
       </file>
     </package>
     <package name="components.shimmerUI">
-      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
-      <file name="RestaurantMenuShimmer.js" path="C:\Users\I564011\OneDrive - SAP SE\Personal\namaste-react-master\namaste-react-master\src\components\shimmerUI\RestaurantMenuShimmer.js">
-        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="8" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="8" count="8" type="stmt"/>
-      </file>
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
       <file name="RestaurantsPageShimmer.js" path="C:\Users\I564011\OneDrive - SAP SE\Personal\namaste-react-master\namaste-react-master\src\components\shimmerUI\RestaurantsPageShimmer.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
-        <line num="2" count="48" type="stmt"/>
-        <line num="4" count="3" type="stmt"/>
-        <line num="7" count="48" type="stmt"/>
+        <line num="2" count="32" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="7" count="32" type="stmt"/>
       </file>
     </package>
     <package name="utils">
-      <metrics statements="48" coveredstatements="43" conditionals="0" coveredconditionals="0" methods="14" coveredmethods="9"/>
+      <metrics statements="39" coveredstatements="34" conditionals="0" coveredconditionals="0" methods="11" coveredmethods="6"/>
       <file name="CardContext.js" path="C:\Users\I564011\OneDrive - SAP SE\Personal\namaste-react-master\namaste-react-master\src\utils\CardContext.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="3" count="1" type="stmt"/>
       </file>
       <file name="cartSlice.js" path="C:\Users\I564011\OneDrive - SAP SE\Personal\namaste-react-master\namaste-react-master\src\utils\cartSlice.js">
         <metrics statements="5" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
-        <line num="3" count="3" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
-        <line num="21" count="3" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
       </file>
       <file name="constants.js" path="C:\Users\I564011\OneDrive - SAP SE\Personal\namaste-react-master\namaste-react-master\src\utils\constants.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="2" count="3" type="stmt"/>
-        <line num="5" count="3" type="stmt"/>
-        <line num="8" count="3" type="stmt"/>
-        <line num="11" count="3" type="stmt"/>
-        <line num="14" count="3" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
       </file>
       <file name="store.js" path="C:\Users\I564011\OneDrive - SAP SE\Personal\namaste-react-master\namaste-react-master\src\utils\store.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="4" count="3" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
       </file>
       <file name="useAllRestaurants.js" path="C:\Users\I564011\OneDrive - SAP SE\Personal\namaste-react-master\namaste-react-master\src\utils\useAllRestaurants.js">
         <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="5" count="7" type="stmt"/>
-        <line num="6" count="7" type="stmt"/>
-        <line num="8" count="7" type="stmt"/>
-        <line num="9" count="3" type="stmt"/>
-        <line num="13" count="7" type="stmt"/>
-        <line num="14" count="3" type="stmt"/>
-        <line num="16" count="3" type="stmt"/>
-        <line num="18" count="3" type="stmt"/>
-        <line num="21" count="3" type="stmt"/>
-        <line num="24" count="3" type="stmt"/>
-        <line num="25" count="3" type="stmt"/>
-        <line num="28" count="7" type="stmt"/>
+        <line num="5" count="6" type="stmt"/>
+        <line num="6" count="6" type="stmt"/>
+        <line num="8" count="6" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="13" count="6" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="28" count="6" type="stmt"/>
       </file>
       <file name="useOnline.js" path="C:\Users\I564011\OneDrive - SAP SE\Personal\namaste-react-master\namaste-react-master\src\utils\useOnline.js">
         <metrics statements="13" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="3"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="4" count="3" type="stmt"/>
-        <line num="6" count="3" type="stmt"/>
-        <line num="8" count="3" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
-        <line num="12" count="3" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
-        <line num="17" count="3" type="stmt"/>
-        <line num="18" count="3" type="stmt"/>
-        <line num="20" count="3" type="stmt"/>
-        <line num="22" count="3" type="stmt"/>
-        <line num="23" count="3" type="stmt"/>
-        <line num="27" count="3" type="stmt"/>
-      </file>
-      <file name="useRestaurantMenu.js" path="C:\Users\I564011\OneDrive - SAP SE\Personal\namaste-react-master\namaste-react-master\src\utils\useRestaurantMenu.js">
-        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="11" count="2" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="19" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
       </file>
     </package>
   </project>

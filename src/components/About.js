@@ -2,15 +2,6 @@ import React from "react";
 import Profile from "./ProfileClass";
 import UserContext from "../utils/UserContext";
 
-// const About = () => {
-//   return (
-//     <div>
-//       <h1>About Us Page</h1>
-//       <Outlet />
-//     </div>
-//   );
-// };
-
 class About extends React.Component {
   constructor(props) {
     super(props);
