@@ -21,9 +21,14 @@ const Header = () => {
     <div>
       {!isOnline && <OfflineSection />}
       {isOnline && <OnlineSection />}
-      <div className="flex justify-between border-2 border-black">
-        <div className="logo-container">
-          <img data-testid="logo" className="w-52" src={LOGO_URL} />
+      <div className="flex justify-between shadow-md border border-gray-200">
+        <div className="flex">
+          <div className="logo-container m-6 ml-8 h-12 w-12  hover:cursor-pointer transition duration-300 ease-in-out transform hover:scale-105">
+            <img data-testid="logo" className="w-52" src={LOGO_URL} />
+          </div>
+          <div className="location-container justify-center my-12 font-semibold">
+            Gurugram, Haryana, India
+          </div>
         </div>
         <div className="py-5">
           <ul className="text-2xl flex list-none">

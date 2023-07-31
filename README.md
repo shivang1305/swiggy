@@ -22,12 +22,14 @@
 
 ## TODO:
 
-- Filters on home page
+- Move search feature to the header section
+- Remove unwanted sections from header
+- Implement offers & food category carousel section on home page
 - Location feature on landing page
-- Improve the CSS of restaurant cards [DONE]
 - Filters in restuarant menu page
 - Add to cart feature
 - Payment gateway integration feature
 
 ## Prod Link:
+
 https://64c56510d37abc194313125d--merry-genie-bf72cf.netlify.app/
