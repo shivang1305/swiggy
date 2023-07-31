@@ -24,7 +24,7 @@
 
 - Filters on home page
 - Location feature on landing page
-- Improve the CSS of restaurant cards
+- Improve the CSS of restaurant cards [DONE]
 - Filters in restuarant menu page
 - Add to cart feature
 - Payment gateway integration feature
