@@ -21,19 +21,19 @@ const RestaurantCard = (props) => {
   return (
     <div className="w-80 mx-8 my-8 bg-white text-black rounded-lg overflow-hidden shadow-md border border-gray-200 hover:cursor-pointer transition duration-300 ease-in-out transform hover:scale-105">
       <img
-        className="w-full h-52 object-cover"
+        className="w-full h-40 object-cover"
         alt="restaurant-logo"
         src={CDN_URL + cloudinaryImageId}
       />
 
       <div className="p-2">
-        <div className="text-xl font-bold mb-2">{name}</div>
+        <div className="text-xl font-bold mb-2 truncate">{name}</div>
         <div className="text-gray-600 truncate" title={cuisines.join(", ")}>
           {cuisines.join(", ")}
         </div>
       </div>
       <div className="p-2">
-        <div className="mt-5 flex justify-between">
+        <div className="mt-1 flex justify-between">
           <span className="icon-star text-yellow-500 mr-1">{avgRating}⭐</span>
           <div>•</div>
           <div>{deliveryTime} MINS</div>
