@@ -1,10 +1,14 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { ALL_RESTAURANTS_API } from "./constants";
+import { useDispatch } from "react-redux";
+import {
+  fillAllRestaurants,
+  fillBackupRestaurants,
+  putCarouselItems,
+} from "./restaurantsSlice";
 
 const useAllRestaurants = () => {
-  const [allRestaurantData, setAllRestaurantData] = useState([]);
-  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-  const [allCarouselData, setAllCarouselData] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getAllRestaurants();
@@ -19,23 +23,16 @@ const useAllRestaurants = () => {
     console.log("RESTAURANT DATA: ", jsonData);
 
     const restaurantData =
-      jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+      jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants; // optional chaining
 
     const carouselData =
       jsonData?.data?.cards[0]?.card?.card?.imageGridCards?.info;
 
-    setAllRestaurantData(restaurantData);
-    setFilteredRestaurants(restaurantData);
-    setAllCarouselData(carouselData);
+    dispatch(fillAllRestaurants(restaurantData));
+    dispatch(fillBackupRestaurants(restaurantData));
+    dispatch(putCarouselItems(carouselData));
   };
-
-  return [
-    allRestaurantData,
-    filteredRestaurants,
-    setFilteredRestaurants,
-    allCarouselData,
-  ];
 };
 
 export default useAllRestaurants;

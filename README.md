@@ -22,8 +22,7 @@
 
 ## TODO:
 
-- Move search feature to the header section
-- Remove unwanted sections from header
+- Improve the UI of header section
 - Implement offers & food category carousel section on home page
 - Location feature on landing page
 - Filters in restuarant menu page

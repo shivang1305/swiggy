@@ -1,12 +1,19 @@
+import { useSelector } from "react-redux";
 import BannerCard from "./BannerCard";
+import store from "../utils/store";
 
-const OffersCarousel = ({ allCarouselData }) => {
+const OffersCarousel = () => {
+  const allCarouselData = useSelector(
+    (store) => store.restaurants.carouselItems
+  );
   return (
     <div>
       <div className="text-3xl font-bold mx-5 my-5">Best Offers for You</div>
       <div className="flex overflow-x-auto">
         {allCarouselData.map((carouselCard) => {
-          return <BannerCard imageId={carouselCard.imageId} />;
+          return (
+            <BannerCard key={carouselCard.id} imageId={carouselCard.imageId} />
+          );
         })}
       </div>
     </div>

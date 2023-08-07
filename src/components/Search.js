@@ -1,15 +1,23 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import store from "../utils/store";
+import { fillAllRestaurants } from "../utils/restaurantsSlice";
 
-const Search = ({ allRestaurantData, setFilteredRestaurants }) => {
+const Search = () => {
   const [searchText, setSearchText] = useState("");
+
+  const allRestaurantData = useSelector(
+    (store) => store.restaurants.backupItems
+  );
+
+  const dispatch = useDispatch();
 
   // to search for restaurants
   const searchRestaurants = () => {
-    console.log(allRestaurantData);
     let searchedRestaurant = allRestaurantData.filter((res) =>
       res.info.name.toLowerCase().includes(searchText.toLowerCase())
     );
-    setFilteredRestaurants(searchedRestaurant);
+    dispatch(fillAllRestaurants(searchedRestaurant));
   };
 
   return (
