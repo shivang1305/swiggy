@@ -13,21 +13,26 @@ const Body = () => {
     (store) => store.restaurants.restaurantItems
   );
 
+  const backupItems = useSelector((store) => store.restaurants.backupItems);
+
   // conditional rendering
-  return restaurantItems.length === 0 ? (
+  return backupItems.length === 0 ? (
     <RestaurantsPageShimmer />
   ) : (
     <div className="body mx-28">
       <OffersCarousel />
-      {restaurantItems?.length === 0 ? (
-        <h2>No restaurant found</h2>
-      ) : (
-        <div>
-          <hr className="mt-5" />
-          <div className="text-3xl font-bold mt-8 ml-5">
-            Restaurants with online food delivery
-          </div>
-          <FilterSection />
+
+      <div>
+        <hr className="mt-5" />
+        <div className="text-3xl font-bold mt-8 ml-5">
+          Restaurants with online food delivery
+        </div>
+        <FilterSection />
+        {restaurantItems.length === 0 ? (
+          <h2 className="font-semibold text-lg bg-red-400">
+            No restaurant found
+          </h2>
+        ) : (
           <div className="flex flex-wrap mt-5" data-testid="restaurant-list">
             {restaurantItems.map((resData) => {
               return (
@@ -41,8 +46,8 @@ const Body = () => {
               );
             })}
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

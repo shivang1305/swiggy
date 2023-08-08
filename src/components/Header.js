@@ -24,7 +24,9 @@ const Header = () => {
       <div className="flex justify-between shadow-md border border-gray-200">
         <div className="flex">
           <div className="logo-container m-6 ml-8 h-12 w-12  hover:cursor-pointer transition duration-300 ease-in-out transform hover:scale-105">
-            <img data-testid="logo" className="w-52" src={LOGO_URL} />
+            <Link to="/">
+              <img data-testid="logo" className="w-52" src={LOGO_URL} />
+            </Link>
           </div>
           <div className="location-container justify-center my-12 font-semibold">
             Gurugram, Haryana, India

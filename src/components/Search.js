@@ -31,7 +31,7 @@ const Search = () => {
       ></input>
       <button
         data-testid="search-btn"
-        className="ml-3 cursor-pointer border-black border-2 rounded-lg p-1 bg-slate-300"
+        className="ml-3 cursor-pointer border-black border-2 rounded-lg p-1 bg-yellow-500"
         onClick={searchRestaurants}
       >
         Search
