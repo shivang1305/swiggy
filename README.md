@@ -31,4 +31,4 @@
 - Payment gateway integration feature
 
 ## Prod Link:
-https://64c56510d37abc194313125d--merry-genie-bf72cf.netlify.app/
+https://foodymonk.netlify.app/
