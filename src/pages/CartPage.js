@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { MENU_ITEM_IMAGE_URL } from "../utils/constants";
 import { clearCart } from "../utils/cartSlice";
 
-const Cart = () => {
+const CartPage = () => {
   const cartItems = useSelector((store) => store.cart.items);
 
   const calcTotalAmount = () => {
@@ -66,4 +66,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default CartPage;

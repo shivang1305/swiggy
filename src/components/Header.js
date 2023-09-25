@@ -34,28 +34,28 @@ const Header = () => {
         </div>
         <div className="py-5">
           <ul className="text-2xl flex list-none">
-            <li className="p-5">
-              <Link to="/">Home</Link>
+            <li className="p-5 font-semibold text-xl">
+              <Link to="/about">Search</Link>
             </li>
-            <li className="p-5">
-              <Link to="/about">About</Link>
+            <li className="p-5 font-semibold text-xl">
+              <Link to="/contact">Offers</Link>
             </li>
-            <li className="p-5">
-              <Link to="/contact">Contact</Link>
-            </li>
-            <li className="p-5">
-              <Link to="/instamart">Instamart</Link>
-            </li>
-            <li className="p-5">
-              <Link to="/cart" data-testid="cart">
-                {" "}
-                🛒{cartItems.length}{" "}
-              </Link>
+            <li className="p-5 font-semibold text-xl">
+              <Link to="/instamart">Help</Link>
             </li>
             <li>
-              <button className="p-5 mr-3 h-12 w-24" onClick={toggleButton}>
+              <button
+                className="p-5 h-12 w-24 font-semibold text-xl"
+                onClick={toggleButton}
+              >
                 {btnLabel}
               </button>
+            </li>
+            <li className="p-5 font-semibold text-xl">
+              <Link to="/cart" data-testid="cart">
+                {"Cart "}
+                {cartItems.length}
+              </Link>
             </li>
           </ul>
         </div>

@@ -1,9 +1,8 @@
 import { useParams } from "react-router-dom";
-import RestaurantMenuShimmer from "./shimmerUI/RestaurantMenuShimmer";
+import RestaurantMenuShimmer from "../components/shimmerUI/RestaurantMenuShimmer";
 import { MENU_ITEM_IMAGE_URL } from "../utils/constants";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
-import { useDispatch } from "react-redux";
-import { addItem } from "../utils/cartSlice";
+import AddToCart from "../components/AddToCartButton";
 
 const RestaurantMenu = () => {
   const { restaurantId } = useParams();
@@ -25,12 +24,6 @@ const RestaurantMenu = () => {
   const { itemCards } =
     restaurantInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
       ?.card;
-
-  const dispatch = useDispatch();
-
-  const addItemToCart = (item) => {
-    dispatch(addItem(item));
-  };
 
   return (
     <div className="p-6 bg-slate-200">
@@ -75,13 +68,7 @@ const RestaurantMenu = () => {
               <p className="text-base font-bold mb-2">
                 ₹{menuItem.card.info.price / 100}
               </p>
-              <button
-                className="bg-yellow-500 text-white text-base font-bold px-2 py-4 rounded cursor-pointer border-none hover:bg-yellow-600"
-                onClick={() => addItemToCart(menuItem)}
-                data-testid="add-btn"
-              >
-                Add to Cart
-              </button>
+              <AddToCart menuItem={menuItem} />
             </div>
           </div>
         ))}

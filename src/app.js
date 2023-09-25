@@ -5,13 +5,13 @@ import Body from "./components/Body";
 import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Footer from "./components/Footer";
-import RestaurantMenu from "./components/RestaurantMenu";
+import RestaurantMenu from "./pages/RestaurantMenu";
 import ProfileClass from "./components/ProfileClass";
 import Instamart from "./components/Instamart";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import store from "./utils/store";
-import Cart from "./components/Cart";
+import CartPage from "./pages/CartPage";
 import About from "./components/About";
 import Contact from "./components/Contact";
 
@@ -79,7 +79,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: <Cart />,
+        element: <CartPage />,
       },
     ],
   },
