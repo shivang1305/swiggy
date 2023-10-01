@@ -25,7 +25,7 @@ const RestaurantMenu = () => {
     restaurantInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
       ?.card;
 
-  const restaurantName = restaurantInfo?.cards[0]?.card?.card?.info?.name;
+  const { restaurantName } = restaurantInfo?.cards[0]?.card?.card?.info?.name;
 
   return (
     <div className="p-6 bg-slate-200">
