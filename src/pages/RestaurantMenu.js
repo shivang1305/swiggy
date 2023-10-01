@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import RestaurantMenuShimmer from "../components/shimmerUI/RestaurantMenuShimmer";
 import { MENU_ITEM_IMAGE_URL } from "../utils/constants";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
-import AddToCart from "../components/AddToCartButton";
+import AddToCartButton from "../components/AddToCartButton";
 
 const RestaurantMenu = () => {
   const { restaurantId } = useParams();
@@ -24,6 +24,8 @@ const RestaurantMenu = () => {
   const { itemCards } =
     restaurantInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
       ?.card;
+
+  const restaurantName = restaurantInfo?.cards[0]?.card?.card?.info?.name;
 
   return (
     <div className="p-6 bg-slate-200">
@@ -68,7 +70,10 @@ const RestaurantMenu = () => {
               <p className="text-base font-bold mb-2">
                 ₹{menuItem.card.info.price / 100}
               </p>
-              <AddToCart menuItem={menuItem} />
+              <AddToCartButton
+                menuItem={menuItem}
+                restaurantName={restaurantName}
+              />
             </div>
           </div>
         ))}
