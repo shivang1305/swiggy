@@ -5,7 +5,7 @@ import ClearCartDialog from "./ClearCartDialog";
 
 const AddToCartButton = ({ menuItem, restaurantName }) => {
   // adding the restaurant name field into the menu item obj
-  menuItem.restaurantName = restaurantName;
+  menuItem.restaurant = restaurantName;
 
   const cartItems = useSelector((store) => store.cart.items);
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const AddToCartButton = ({ menuItem, restaurantName }) => {
     // if cart is not empty but the restaurant is same --> directly add to the cart
     if (
       cartItems.length == 0 ||
-      (cartItems.length > 0 && cartItems[0].restaurantName === restaurantName)
+      (cartItems.length > 0 && cartItems[0].restaurant === restaurantName)
     ) {
       return true;
     }
