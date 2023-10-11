@@ -25,8 +25,6 @@ const RestaurantMenu = () => {
     restaurantInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
       ?.card;
 
-  const restaurantName = restaurantInfo?.cards[0]?.card?.card?.info?.name;
-
   return (
     <div className="p-6 bg-slate-200">
       <div className="restaurant-menu-page-header">
@@ -70,10 +68,7 @@ const RestaurantMenu = () => {
               <p className="text-base font-bold mb-2">
                 ₹{menuItem.card.info.price / 100}
               </p>
-              <AddToCartButton
-                menuItem={menuItem}
-                restaurantName={restaurantName}
-              />
+              <AddToCartButton menuItem={menuItem} restaurantName={name} />
             </div>
           </div>
         ))}
