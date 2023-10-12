@@ -8,7 +8,7 @@ const CartPage = () => {
   const calcTotalAmount = () => {
     let sum = 0;
     cartItems.map((item) => {
-      sum += item.card.info.price / 100;
+      sum += (item.card.info.price / 100) * item.quantity;
     });
     return sum;
   };
@@ -38,8 +38,8 @@ const CartPage = () => {
               <div className="flex-grow">
                 <h2 className="text-lg font-bold">{item.card.info.name}</h2>
                 <p className="text-gray-600">
-                  Quantity: {1} | Price: Rs.
-                  {item.card.info.price.toFixed(2) / 100}
+                  Quantity: {item.quantity} | Price: Rs.
+                  {(item.card.info.price.toFixed(2) / 100) * item.quantity}
                 </p>
               </div>
             </div>

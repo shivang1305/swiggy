@@ -5,6 +5,7 @@ import useOnline from "../utils/useOnline";
 import OnlineSection from "./OnlineSection";
 import OfflineSection from "./OfflineSection";
 import { useSelector } from "react-redux";
+import { getNumberOfCartItems } from "../utils/helperFunctions";
 
 const Header = () => {
   const [btnLabel, setBtnLabel] = useState("Login");
@@ -54,7 +55,7 @@ const Header = () => {
             <li className="p-5 font-semibold text-xl">
               <Link to="/cart" data-testid="cart">
                 {"Cart "}
-                {cartItems.length}
+                {getNumberOfCartItems(cartItems)}
               </Link>
             </li>
           </ul>

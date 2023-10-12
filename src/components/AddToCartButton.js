@@ -2,6 +2,10 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, removeItem } from "../utils/cartSlice";
 import ClearCartDialog from "./ClearCartDialog";
+import {
+  getInitialItemValue,
+  isRestaurantSame,
+} from "../utils/helperFunctions";
 
 const AddToCartButton = ({ menuItem }) => {
   // adding the restaurant name field into the menu item obj
@@ -10,35 +14,13 @@ const AddToCartButton = ({ menuItem }) => {
   const cartItems = useSelector((store) => store.cart.items);
   const dispatch = useDispatch();
 
-  // to get the initial count of each item if it is already added into the cart
-  const getInitialItemValue = () => {
-    let intitialCount = 0;
-    cartItems.map((cartItem) => {
-      if (JSON.stringify(cartItem) === JSON.stringify(menuItem))
-        intitialCount++;
-    });
-
-    return intitialCount;
-  };
-
-  // to verify that the current menu item is from same restaurant as other items in the cart
-  const isRestaurantSame = () => {
-    // if cart is empty ---> directly add the item to cart
-    // if cart is not empty but the restaurant is same --> directly add to the cart
-    if (
-      cartItems.length == 0 ||
-      (cartItems.length > 0 && cartItems[0].restaurant === menuItem.restaurant)
-    ) {
-      return true;
-    }
-    return false;
-  };
-
-  const [itemCount, setItemCount] = useState(getInitialItemValue());
+  const [itemCount, setItemCount] = useState(
+    getInitialItemValue(cartItems, menuItem)
+  );
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const addItemToCart = (item) => {
-    if (!isRestaurantSame()) {
+    if (!isRestaurantSame(cartItems, menuItem)) {
       setIsDialogOpen(true);
     } else {
       setItemCount(itemCount + 1);
