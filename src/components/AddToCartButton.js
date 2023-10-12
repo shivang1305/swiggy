@@ -8,9 +8,6 @@ import {
 } from "../utils/helperFunctions";
 
 const AddToCartButton = ({ menuItem }) => {
-  // adding the restaurant name field into the menu item obj
-  // menuItem.restaurant = restaurantName;
-
   const cartItems = useSelector((store) => store.cart.items);
   const dispatch = useDispatch();
 

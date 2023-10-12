@@ -1,28 +1,32 @@
 import { useSelector, useDispatch } from "react-redux";
 import { MENU_ITEM_IMAGE_URL } from "../utils/constants";
-import { clearCart } from "../utils/cartSlice";
+import { addItem, clearCart, removeItem } from "../utils/cartSlice";
+import { calcTotalAmount } from "../utils/helperFunctions";
+import { EMPTY_CART_IMAGE_URL } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 const CartPage = () => {
   const cartItems = useSelector((store) => store.cart.items);
-
-  const calcTotalAmount = () => {
-    let sum = 0;
-    cartItems.map((item) => {
-      sum += (item.card.info.price / 100) * item.quantity;
-    });
-    return sum;
-  };
-
   const dispatch = useDispatch();
-  const emptyCart = () => {
-    dispatch(clearCart());
-  };
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Cart</h1>
       {cartItems.length === 0 ? (
-        <p className="text-gray-600">Your cart is empty.</p>
+        <div className="text-center">
+          <img
+            src={EMPTY_CART_IMAGE_URL}
+            alt="Empty Cart"
+            className="w-1/3 mx-auto mb-4"
+          />
+          <p className="text-xl font-semibold text-gray-600 mb-4">
+            Your cart is empty.
+          </p>
+          <Link to="/">
+            <button className="bg-yellow-500 text-white text-base font-bold px-2 py-4 rounded cursor-pointer border-none hover:bg-yellow-600">
+              Browse Restaurants Near You
+            </button>
+          </Link>
+        </div>
       ) : (
         <div>
           {cartItems.map((item) => (
@@ -35,18 +39,28 @@ const CartPage = () => {
                 alt={item.card.info.name}
                 className="w-20 h-20 rounded-full mr-4"
               />
-              <div className="flex-grow">
-                <h2 className="text-lg font-bold">{item.card.info.name}</h2>
-                <p className="text-gray-600">
-                  Quantity: {item.quantity} | Price: Rs.
+              <div className="flex">
+                <h2 className="text-lg font-bold mx-4">
+                  {item.card.info.name}
+                </h2>
+                <div
+                  className="bg-yellow-500 w-20 justify-between flex text-white text-base font-bold px-1 py-2 mx-4 rounded cursor-pointer border-none hover:bg-yellow-600"
+                  data-testid="add-btn"
+                >
+                  <button onClick={() => dispatch(removeItem(item))}>-</button>
+                  <div>{item.quantity}</div>
+                  <button onClick={() => dispatch(addItem(item))}>+</button>
+                </div>
+                <h3 className="text-base font-semibold">
+                  Price: Rs.
                   {(item.card.info.price.toFixed(2) / 100) * item.quantity}
-                </p>
+                </h3>
               </div>
             </div>
           ))}
           <div className="flex justify-between">
             <div className="font-semibold text-lg ml-28 mt-8">
-              Total: Rs.{calcTotalAmount()}
+              Total: Rs.{calcTotalAmount(cartItems)}
             </div>
             <div className="mt-8 flex justify-end">
               <button className="bg-green-400 text-white px-4 py-2 rounded">
@@ -54,7 +68,7 @@ const CartPage = () => {
               </button>
               <button
                 className="bg-red-400 text-white px-4 py-2 rounded ml-5"
-                onClick={() => emptyCart()}
+                onClick={() => dispatch(clearCart())}
               >
                 Clear Cart
               </button>

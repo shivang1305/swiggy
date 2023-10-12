@@ -36,3 +36,11 @@ export const isRestaurantSame = (cartItems, menuItem) => {
   }
   return false;
 };
+
+export const calcTotalAmount = (cartItems) => {
+  let sum = 0;
+  cartItems.map((item) => {
+    sum += (item.card.info.price / 100) * item.quantity;
+  });
+  return sum;
+};
