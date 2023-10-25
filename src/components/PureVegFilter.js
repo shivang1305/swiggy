@@ -29,7 +29,7 @@ const PureVegFilter = () => {
   };
   return (
     <div
-      className={`ml-3 cursor-pointer border-black border-2 rounded-lg p-1 ${
+      className={`ml-3 cursor-pointer border-black border-2 rounded-lg p-2 ${
         isFilterClicked ? "bg-slate-400" : "bg-slate-300"
       }`}
     >

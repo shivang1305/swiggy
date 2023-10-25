@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { LOGO_URL } from "../utils/constants";
+import { CART_IMG_URL, LOGO_URL } from "../utils/constants";
 import useOnline from "../utils/useOnline";
 import OnlineSection from "./OnlineSection";
 import OfflineSection from "./OfflineSection";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { getNumberOfCartItems } from "../utils/helperFunctions";
+import { openMenu } from "../utils/locationSlice";
 
 const Header = () => {
   const [btnLabel, setBtnLabel] = useState("Login");
@@ -17,6 +18,7 @@ const Header = () => {
   };
 
   const cartItems = useSelector((store) => store.cart.items);
+  const dispatch = useDispatch();
 
   return (
     <div>
@@ -29,14 +31,19 @@ const Header = () => {
               <img data-testid="logo" className="w-52" src={LOGO_URL} />
             </Link>
           </div>
-          <div className="location-container justify-center my-12 font-semibold">
-            Gurugram, Haryana, India
-          </div>
+          <button
+            className="location-container justify-center my-12 font-semibold hover:cursor-pointer"
+            onClick={() => {
+              dispatch(openMenu());
+            }}
+          >
+            Gurugram, Haryana, India🔻
+          </button>
         </div>
         <div className="py-5">
           <ul className="text-2xl flex list-none">
             <li className="p-5 font-semibold text-xl">
-              <Link to="/about">Search</Link>
+              <Link to="/about">Find</Link>
             </li>
             <li className="p-5 font-semibold text-xl">
               <Link to="/contact">Offers</Link>
@@ -54,8 +61,10 @@ const Header = () => {
             </li>
             <li className="p-5 font-semibold text-xl">
               <Link to="/cart" data-testid="cart">
-                {"Cart "}
-                {getNumberOfCartItems(cartItems)}
+                <div className="flex">
+                  <img alt="cart-img" src={CART_IMG_URL} className="h-7 w-7" />
+                  {getNumberOfCartItems(cartItems)}
+                </div>
               </Link>
             </li>
           </ul>

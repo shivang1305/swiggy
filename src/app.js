@@ -14,6 +14,7 @@ import store from "./utils/store";
 import CartPage from "./pages/CartPage";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import Sidebar from "./components/Sidebar";
 
 // const Contact = lazy(() => import("./components/Contact"));
 // const About = lazy(() => import("./components/About"));
@@ -25,10 +26,11 @@ const AppLayout = () => {
   });
 
   return (
-    <div className="app">
+    <div className="app z-1">
       <Provider store={store}>
         <UserContext.Provider value={{ user, setUser }}>
           <Header />
+          <Sidebar />
           <Outlet />
           <Footer />
         </UserContext.Provider>

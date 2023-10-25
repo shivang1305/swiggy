@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import store from "../utils/store";
 import { fillAllRestaurants } from "../utils/restaurantsSlice";
+import { SEARCH_IMG_URL } from "../utils/constants";
 
 const Search = () => {
   const [searchText, setSearchText] = useState("");
@@ -21,21 +22,21 @@ const Search = () => {
   };
 
   return (
-    <div className="search">
+    <div className="flex">
       <input
         data-testid="search-input "
-        className="border-black border-2 rounded-lg p-1"
+        className="border-black border-2 rounded-lg p-2"
         placeholder="Restaurant, Dish, Cuisine"
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
-      ></input>
-      <button
+      />
+      <img
         data-testid="search-btn"
-        className="ml-3 cursor-pointer border-black border-2 rounded-lg p-1 bg-yellow-500"
+        alt="search-img"
+        src={SEARCH_IMG_URL}
+        className="h-7 w-7 ml-2 mr-4 mt-1 hover:cursor-pointer"
         onClick={searchRestaurants}
-      >
-        Search
-      </button>
+      />
     </div>
   );
 };
