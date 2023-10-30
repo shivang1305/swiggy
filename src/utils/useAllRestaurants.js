@@ -20,8 +20,6 @@ const useAllRestaurants = () => {
 
     const jsonData = await data.json();
 
-    console.log("RESTAURANT DATA: ", jsonData);
-
     const restaurantData =
       jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants; // optional chaining

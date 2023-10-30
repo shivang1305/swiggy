@@ -4,19 +4,20 @@ const locationSlice = createSlice({
   name: "location",
   initialState: {
     isMenuOpen: false,
+    location: "Gurugram, Haryana, India",
   },
   reducers: {
-    toggleMenu: (state) => {
-      state.isMenuOpen = !state.isMenuOpen;
-    },
     openMenu: (state) => {
       state.isMenuOpen = true;
     },
     closeMenu: (state) => {
       state.isMenuOpen = false;
     },
+    setLocation: (state, action) => {
+      state.location = action.payload;
+    },
   },
 });
 
-export const { toggleMenu, openMenu, closeMenu } = locationSlice.actions;
+export const { openMenu, closeMenu, setLocation } = locationSlice.actions;
 export default locationSlice.reducer;

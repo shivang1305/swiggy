@@ -23,3 +23,6 @@ export const GPS_IMG_URL =
 
 export const CART_IMG_URL =
   "https://www.iconpacks.net/icons/2/free-shopping-cart-icon-3041-thumb.png";
+
+export const SEARCH_LOCATION_API_URL =
+  "https://api.locationiq.com/v1/autocomplete?key=pk.52edb4951867ed3df1b858c24daeae0f&q=";

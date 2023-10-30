@@ -18,6 +18,7 @@ const Header = () => {
   };
 
   const cartItems = useSelector((store) => store.cart.items);
+  const currentLocation = useSelector((store) => store.location.location);
   const dispatch = useDispatch();
 
   return (
@@ -37,7 +38,7 @@ const Header = () => {
               dispatch(openMenu());
             }}
           >
-            Gurugram, Haryana, India🔻
+            {currentLocation}🔻
           </button>
         </div>
         <div className="py-5">
