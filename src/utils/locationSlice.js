@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {
+  getLocationDetails,
+  updateLocalStorageLocation,
+} from "./helperFunctions";
 
 const locationSlice = createSlice({
   name: "location",
   initialState: {
     isMenuOpen: false,
-    location: {
-      name: localStorage.getItem("location_name"),
-      lat: localStorage.getItem("location_lat"),
-      lng: localStorage.getItem("location_lng"),
-    },
+    location: getLocationDetails(),
   },
   reducers: {
     openMenu: (state) => {
@@ -19,11 +19,7 @@ const locationSlice = createSlice({
     },
     setLocation: (state, action) => {
       state.location = action.payload;
-
-      localStorage.clear();
-      localStorage.setItem("location_name", state.location.name);
-      localStorage.setItem("location_lat", state.location.lat);
-      localStorage.setItem("location_lng", state.location.lng);
+      updateLocalStorageLocation(state.location);
     },
   },
 });

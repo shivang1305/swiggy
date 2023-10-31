@@ -30,9 +30,11 @@ const useAllRestaurants = () => {
     const carouselData =
       jsonData?.data?.cards[0]?.card?.card?.imageGridCards?.info;
 
-    dispatch(fillAllRestaurants(restaurantData));
-    dispatch(fillBackupRestaurants(restaurantData));
-    dispatch(putCarouselItems(carouselData));
+    if (restaurantData) {
+      dispatch(fillAllRestaurants(restaurantData));
+      dispatch(fillBackupRestaurants(restaurantData));
+      dispatch(putCarouselItems(carouselData));
+    }
   };
 };
 

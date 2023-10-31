@@ -1,10 +1,11 @@
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { closeMenu, setLocation } from "../utils/locationSlice";
-import { GPS_IMG_URL, SEARCH_LOCATION_API_URL } from "../utils/constants";
-import { useEffect, useState } from "react";
+import { GPS_IMG_URL } from "../utils/constants";
+import { useState } from "react";
 import { getLocationPromise } from "../utils/helperFunctions";
 import { useNavigate } from "react-router-dom";
+import useLocationSuggestion from "../utils/useLocationSuggestion";
 
 const Sidebar = () => {
   const isMenuOpen = useSelector((store) => store.location.isMenuOpen);
@@ -15,25 +16,7 @@ const Sidebar = () => {
   const [locationQuery, setLocationQuery] = useState("");
   const [locationSuggestions, setLocationSuggestions] = useState([]);
 
-  useEffect(() => {
-    // debouncing
-    const locationQueryTimer = setTimeout(() => {
-      getSearchLocationSuggestions();
-    }, 400);
-
-    return () => {
-      clearTimeout(locationQueryTimer);
-    };
-  }, [locationQuery]);
-
-  const getSearchLocationSuggestions = async () => {
-    const searchLocationRes = await fetch(
-      `${SEARCH_LOCATION_API_URL}${locationQuery}`
-    );
-    const jsonData = await searchLocationRes.json();
-    console.log(jsonData);
-    setLocationSuggestions(jsonData);
-  };
+  useLocationSuggestion(locationQuery, setLocationSuggestions);
 
   const onLocationSet = (suggestion) => {
     setLocationQuery(suggestion?.display_name);
