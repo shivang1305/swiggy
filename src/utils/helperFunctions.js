@@ -37,6 +37,7 @@ export const isRestaurantSame = (cartItems, menuItem) => {
   return false;
 };
 
+// to calculate the total price of all the items user has placed in the cart
 export const calcTotalAmount = (cartItems) => {
   let sum = 0;
   cartItems.map((item) => {
@@ -44,3 +45,18 @@ export const calcTotalAmount = (cartItems) => {
   });
   return sum;
 };
+
+// to get the current location of the user
+export let getLocationPromise = new Promise((resolve, reject) => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      console.log(position);
+      lat = position.coords.latitude;
+      long = position.coords.longitude;
+
+      resolve({ latitude: lat, longitude: long });
+    });
+  } else {
+    reject("your browser doesn't support geolocation API");
+  }
+});

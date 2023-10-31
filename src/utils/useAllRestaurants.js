@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { ALL_RESTAURANTS_API } from "./constants";
-import { useDispatch } from "react-redux";
+import { getAllRestaurantAPI } from "./constants";
+import { useDispatch, useSelector } from "react-redux";
 import {
   fillAllRestaurants,
   fillBackupRestaurants,
@@ -9,14 +9,17 @@ import {
 
 const useAllRestaurants = () => {
   const dispatch = useDispatch();
+  const location = useSelector((store) => store.location.location);
+
+  const { lat, lng } = location;
 
   useEffect(() => {
     getAllRestaurants();
-  }, []);
+  }, [location]);
 
   // function to fetch the data
   const getAllRestaurants = async () => {
-    const data = await fetch(ALL_RESTAURANTS_API);
+    const data = await fetch(getAllRestaurantAPI(lat, lng));
 
     const jsonData = await data.json();
 

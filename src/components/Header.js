@@ -38,7 +38,7 @@ const Header = () => {
               dispatch(openMenu());
             }}
           >
-            {currentLocation}🔻
+            {currentLocation?.name}🔻
           </button>
         </div>
         <div className="py-5">

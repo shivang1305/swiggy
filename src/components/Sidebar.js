@@ -3,11 +3,14 @@ import { useDispatch } from "react-redux";
 import { closeMenu, setLocation } from "../utils/locationSlice";
 import { GPS_IMG_URL, SEARCH_LOCATION_API_URL } from "../utils/constants";
 import { useEffect, useState } from "react";
+import { getLocationPromise } from "../utils/helperFunctions";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const isMenuOpen = useSelector((store) => store.location.isMenuOpen);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [locationQuery, setLocationQuery] = useState("");
   const [locationSuggestions, setLocationSuggestions] = useState([]);
@@ -28,7 +31,7 @@ const Sidebar = () => {
       `${SEARCH_LOCATION_API_URL}${locationQuery}`
     );
     const jsonData = await searchLocationRes.json();
-
+    console.log(jsonData);
     setLocationSuggestions(jsonData);
   };
 
@@ -36,12 +39,27 @@ const Sidebar = () => {
     setLocationQuery(suggestion?.display_name);
     setLocationSuggestions([]);
     setLocationQuery("");
-    dispatch(setLocation(suggestion?.display_name));
+
+    const locationObj = {
+      name: suggestion?.display_name,
+      lat: suggestion?.lat,
+      lng: suggestion?.lon,
+    };
+
+    dispatch(setLocation(locationObj));
     dispatch(closeMenu());
+    navigate("/");
   };
 
-  const getCurrentLocation = () => {
-    console.log(navigator.geolocation.getCurrentPosition(showPosition));
+  const currentLocationHandler = () => {
+    getLocationPromise
+      .then((location) => {
+        console.log(location.latitude);
+        console.log(location.longitude);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const sidebarClasses = isMenuOpen
@@ -104,7 +122,7 @@ const Sidebar = () => {
         ) : (
           <button
             className="border-black border rounded-lg p-2 px-2 w-full mt-14 flex"
-            onClick={() => getCurrentLocation()}
+            onClick={() => currentLocationHandler()}
           >
             <img src={GPS_IMG_URL} alt="gps-img" className="h-7 w-7 mr-2" />
             Get current location using GPS

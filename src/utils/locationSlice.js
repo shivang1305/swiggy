@@ -4,7 +4,11 @@ const locationSlice = createSlice({
   name: "location",
   initialState: {
     isMenuOpen: false,
-    location: "Gurugram, Haryana, India",
+    location: {
+      name: localStorage.getItem("location_name"),
+      lat: localStorage.getItem("location_lat"),
+      lng: localStorage.getItem("location_lng"),
+    },
   },
   reducers: {
     openMenu: (state) => {
@@ -15,6 +19,11 @@ const locationSlice = createSlice({
     },
     setLocation: (state, action) => {
       state.location = action.payload;
+
+      localStorage.clear();
+      localStorage.setItem("location_name", state.location.name);
+      localStorage.setItem("location_lat", state.location.lat);
+      localStorage.setItem("location_lng", state.location.lng);
     },
   },
 });

@@ -13,7 +13,7 @@ const ItemCard = ({ menuItem, name }) => {
       key={menuItem.card.info.id}
     >
       <img
-        className="h-52 object-cover rounded-lg cursor-pointer"
+        className="h-52 w-60 object-cover rounded-lg cursor-pointer"
         src={MENU_ITEM_IMAGE_URL + menuItem.card.info.imageId}
         alt={menuItem.card.info.name}
       />
