@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import { SEARCH_LOCATION_API_URL } from "./constants";
+import { filterLocationAPIData } from "./helperFunctions";
 
 const useLocationSuggestion = (locationQuery, setLocationSuggestions) => {
   useEffect(() => {
     // debouncing
     const locationQueryTimer = setTimeout(() => {
-      getSearchLocationSuggestions();
+      if (locationQuery != "") getSearchLocationSuggestions();
     }, 400);
 
     return () => {
@@ -18,7 +19,7 @@ const useLocationSuggestion = (locationQuery, setLocationSuggestions) => {
       `${SEARCH_LOCATION_API_URL}${locationQuery}`
     );
     const jsonData = await searchLocationRes.json();
-    setLocationSuggestions(jsonData);
+    setLocationSuggestions(filterLocationAPIData(jsonData));
   };
 };
 

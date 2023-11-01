@@ -79,3 +79,12 @@ export const getLocationDetails = () => {
   console.log(locationDetails);
   return locationDetails;
 };
+
+// to filter the data coming from the location API (Indian location only)
+export const filterLocationAPIData = (locations) => {
+  locations = locations.filter(
+    (location) => location?.address?.country === "India"
+  );
+
+  return locations;
+};

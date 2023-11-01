@@ -91,9 +91,9 @@ const Sidebar = () => {
         {locationSuggestions.length > 0 ? (
           <div className="absolute z-10 bg-white px-5 py-2 w-auto shadow-lg border border-gray-100">
             <ul>
-              {locationSuggestions.map((suggestion) => (
+              {locationSuggestions.map((suggestion, index) => (
                 <li
-                  key={suggestion?.place_id}
+                  key={index}
                   className="py-2 px-2 hover:bg-gray-200 cursor-pointer"
                   onClick={() => onLocationSet(suggestion)}
                 >
