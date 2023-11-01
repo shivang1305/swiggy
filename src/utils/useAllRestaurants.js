@@ -34,6 +34,10 @@ const useAllRestaurants = () => {
       dispatch(fillAllRestaurants(restaurantData));
       dispatch(fillBackupRestaurants(restaurantData));
       dispatch(putCarouselItems(carouselData));
+    } else {
+      dispatch(fillAllRestaurants([]));
+      dispatch(fillBackupRestaurants([]));
+      dispatch(putCarouselItems([]));
     }
   };
 };

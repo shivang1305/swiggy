@@ -21,6 +21,9 @@ export const GPS_IMG_URL =
 export const CART_IMG_URL =
   "https://www.iconpacks.net/icons/2/free-shopping-cart-icon-3041-thumb.png";
 
+export const LOCATION_UNSERVICEABLE_URL =
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_476,h_476/portal/m/location_unserviceable.png";
+
 export const SEARCH_LOCATION_API_URL =
   "https://api.locationiq.com/v1/autocomplete?key=pk.52edb4951867ed3df1b858c24daeae0f&q=";
 
