@@ -26,3 +26,6 @@ export const SEARCH_LOCATION_API_URL =
 
 export const getAllRestaurantAPI = (lat, lng) =>
   `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}&page_type=DESKTOP_WEB_LISTING`;
+
+export const getCurrentLocationAPI = (lat, lng) =>
+  `https://us1.locationiq.com/v1/reverse?key=pk.52edb4951867ed3df1b858c24daeae0f&lat=${lat}&lon=${lng}&format=json`;

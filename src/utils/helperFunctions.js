@@ -50,7 +50,6 @@ export const calcTotalAmount = (cartItems) => {
 export let getLocationPromise = new Promise((resolve, reject) => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
-      console.log(position);
       lat = position.coords.latitude;
       long = position.coords.longitude;
 
@@ -76,7 +75,6 @@ export const getLocationDetails = () => {
     lat: localStorage.getItem("location_lat") || 28.4594965,
     lng: localStorage.getItem("location_lng") || 77.0266383,
   };
-  console.log(locationDetails);
   return locationDetails;
 };
 

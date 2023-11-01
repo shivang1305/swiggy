@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { closeMenu, setLocation } from "../utils/locationSlice";
-import { GPS_IMG_URL } from "../utils/constants";
+import { GPS_IMG_URL, getCurrentLocationAPI } from "../utils/constants";
 import { useState } from "react";
 import { getLocationPromise } from "../utils/helperFunctions";
 import { useNavigate } from "react-router-dom";
@@ -37,12 +37,18 @@ const Sidebar = () => {
   const currentLocationHandler = () => {
     getLocationPromise
       .then((location) => {
-        console.log(location.latitude);
-        console.log(location.longitude);
+        console.log(location);
+        getCurrentLocationName(location.latitude, location.longitude);
       })
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const getCurrentLocationName = async (lat, lng) => {
+    const res = await fetch(getCurrentLocationAPI(lat, lng));
+    const jsonData = await res.json();
+    onLocationSet(jsonData);
   };
 
   const sidebarClasses = isMenuOpen
