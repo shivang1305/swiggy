@@ -61,6 +61,7 @@ const Sidebar = () => {
         <button
           onClick={() => {
             setLocationQuery("");
+            setLocationSuggestions([]);
             dispatch(closeMenu());
           }}
           className="text-gray-500 hover:text-gray-700"
