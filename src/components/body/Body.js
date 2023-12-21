@@ -5,7 +5,7 @@ import useAllRestaurants from "../../hooks/useAllRestaurants";
 import OffersCarousel from "../offers/OffersCarousel";
 import FilterSection from "../filters/FilterSection";
 import { useSelector } from "react-redux";
-import { LOCATION_UNSERVICEABLE_URL } from "../../utils/constants";
+import Unserviceable from "../error/Unserviceable";
 
 const Body = () => {
   useAllRestaurants([]);
@@ -17,21 +17,7 @@ const Body = () => {
   const backupItems = useSelector((store) => store.restaurants.backupItems);
 
   // if the location is unserviceable
-  if (restaurantItems.length === 0) {
-    return (
-      <div className="text-center">
-        <img
-          src={LOCATION_UNSERVICEABLE_URL}
-          alt="Location Unserviceable"
-          className="w-96 mx-auto h-96 mb-2 mt-6"
-        />
-        <p className="font-bold text-2xl">Location Unserviceable</p>
-        <p className="text-xl text-slate-400 mb-8">
-          We don’t have any services here till now. Try changing location.
-        </p>
-      </div>
-    );
-  }
+  if (restaurantItems.length === 0) return <Unserviceable />;
 
   // conditional rendering
   return backupItems.length === 0 ? (
