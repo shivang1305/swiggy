@@ -10,7 +10,6 @@ const ItemCard = ({ menuItem, name }) => {
     <div
       className="bg-slate-100 rounded-lg p-4 flex shadow"
       data-testid="menu"
-      key={menuItem.card.info.id}
     >
       <img
         className="h-52 w-60 object-cover rounded-lg cursor-pointer"
@@ -75,7 +74,7 @@ const RestaurantMenu = () => {
       </div>
       <div className="menu-items-container">
         {itemCards.map((menuItem) => (
-          <ItemCard menuItem={menuItem} name={name} />
+          <ItemCard key={menuItem.card.info.id} menuItem={menuItem} name={name} />
         ))}
       </div>
     </div>

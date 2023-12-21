@@ -13,6 +13,7 @@ const cartSlice = createSlice({
         if (item?.card?.info?.id == action?.payload?.card?.info?.id) {
           item.quantity++;
           flag = true;
+          return;
         }
       });
 
