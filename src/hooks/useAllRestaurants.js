@@ -1,11 +1,11 @@
 import { useEffect } from "react";
-import { getAllRestaurantAPI } from "./constants";
+import { getAllRestaurantAPI } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fillAllRestaurants,
   fillBackupRestaurants,
   putCarouselItems,
-} from "./restaurantsSlice";
+} from "../redux/slices/restaurantsSlice";
 
 const useAllRestaurants = () => {
   const dispatch = useDispatch();

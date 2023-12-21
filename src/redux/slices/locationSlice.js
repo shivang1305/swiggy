@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   getLocationDetails,
   updateLocalStorageLocation,
-} from "./helperFunctions";
+} from "../../utils/helperFunctions";
 
 const locationSlice = createSlice({
   name: "location",

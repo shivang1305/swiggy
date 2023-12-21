@@ -1,7 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import RestaurantsPageShimmer from "./shimmerUI/RestaurantsPageShimmer";
 import { Link } from "react-router-dom";
-import useAllRestaurants from "../utils/useAllRestaurants";
+import useAllRestaurants from "../hooks/useAllRestaurants";
 import OffersCarousel from "./OffersCarousel";
 import FilterSection from "./FilterSection";
 import { useSelector } from "react-redux";

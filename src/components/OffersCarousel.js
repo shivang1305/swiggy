@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import BannerCard from "./BannerCard";
-import store from "../utils/store";
 
 const OffersCarousel = () => {
   const allCarouselData = useSelector(

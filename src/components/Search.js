@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import store from "../utils/store";
-import { fillAllRestaurants } from "../utils/restaurantsSlice";
+import { fillAllRestaurants } from "../redux/slices/restaurantsSlice";
 import { SEARCH_IMG_URL } from "../utils/constants";
 
 const Search = () => {

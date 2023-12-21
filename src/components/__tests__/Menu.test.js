@@ -3,9 +3,9 @@ import { fireEvent, render, waitFor } from "@testing-library/react";
 import RestaurantMenu from "../RestaurantMenu";
 import { Provider } from "react-redux";
 import { StaticRouter } from "react-router-dom/server";
-import store from "../../utils/store";
 import { MENU_DATA } from "../mocks/data";
 import Header from "../Header";
+import store from "../../redux/store";
 
 global.fetch = jest.fn(() => {
   return Promise.resolve({

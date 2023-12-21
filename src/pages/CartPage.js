@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { MENU_ITEM_IMAGE_URL } from "../utils/constants";
-import { addItem, clearCart, removeItem } from "../utils/cartSlice";
+import { addItem, clearCart, removeItem } from "../redux/slices/cartSlice";
 import { calcTotalAmount } from "../utils/helperFunctions";
 import { EMPTY_CART_IMAGE_URL } from "../utils/constants";
 import { Link } from "react-router-dom";

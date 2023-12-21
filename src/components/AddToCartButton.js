@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, removeItem } from "../utils/cartSlice";
+import { addItem, removeItem } from "../redux/slices/cartSlice";
 import ClearCartDialog from "./ClearCartDialog";
 import {
   getInitialItemValue,

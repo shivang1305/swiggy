@@ -6,7 +6,7 @@ import OnlineSection from "./OnlineSection";
 import OfflineSection from "./OfflineSection";
 import { useSelector, useDispatch } from "react-redux";
 import { getNumberOfCartItems } from "../utils/helperFunctions";
-import { openMenu } from "../utils/locationSlice";
+import { openMenu } from "../redux/slices/locationSlice";
 
 const Header = () => {
   const [btnLabel, setBtnLabel] = useState("Login");

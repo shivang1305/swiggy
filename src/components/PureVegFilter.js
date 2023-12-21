@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fillAllRestaurants,
   backupRestaurants,
-} from "../utils/restaurantsSlice";
+} from "../redux/slices/restaurantsSlice";
 
 const PureVegFilter = () => {
   const [isFilterClicked, setIsFilterClicked] = useState(false);

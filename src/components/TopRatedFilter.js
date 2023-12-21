@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   backupRestaurants,
   fillAllRestaurants,
-} from "../utils/restaurantsSlice";
+} from "../redux/slices/restaurantsSlice";
 
 const TopRatedFilter = () => {
   const [isFilterClicked, setIsFilterClicked] = useState(false);

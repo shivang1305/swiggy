@@ -1,7 +1,7 @@
 const { configureStore } = require("@reduxjs/toolkit");
-import cartSlice from "./cartSlice";
-import locationSlice from "./locationSlice";
-import restaurantsSlice from "./restaurantsSlice";
+import locationSlice from "./slices/locationSlice";
+import restaurantsSlice from "./slices/restaurantsSlice";
+import cartSlice from "./slices/cartSlice";
 
 const store = configureStore({
   reducer: {

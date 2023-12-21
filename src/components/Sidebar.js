@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { closeMenu, setLocation } from "../utils/locationSlice";
+import { closeMenu, setLocation } from "../redux/slices/locationSlice";
 import { GPS_IMG_URL, getCurrentLocationAPI } from "../utils/constants";
 import { useState } from "react";
 import { getLocationPromise } from "../utils/helperFunctions";

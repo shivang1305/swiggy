@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -10,14 +10,11 @@ import ProfileClass from "./components/ProfileClass";
 import Instamart from "./components/Instamart";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
-import store from "./utils/store";
+import store from "./redux/store";
 import CartPage from "./pages/CartPage";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Sidebar from "./components/Sidebar";
-
-// const Contact = lazy(() => import("./components/Contact"));
-// const About = lazy(() => import("./components/About"));
 
 const AppLayout = () => {
   const [user, setUser] = useState({
@@ -51,11 +48,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: (
-          // <Suspense fallback={<RestaurantMenuShimmer />}>
-          <About />
-          // </Suspense>
-        ),
+        element: <About />,
         children: [
           {
             path: "profile", // no '/' is needed here as if we put "/profile" it will be treated as "localhost:1234/profile" instead of "localhost:1234/about/profile"
@@ -65,11 +58,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/contact",
-        element: (
-          // <Suspense fallback={<h3>Loading.... </h3>}>
-          <Contact />
-          // </Suspense>
-        ),
+        element: <Contact />,
       },
       {
         path: "/restaurant/:restaurantId",
