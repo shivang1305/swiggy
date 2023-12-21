@@ -1,16 +1,13 @@
 import { useParams } from "react-router-dom";
-import RestaurantMenuShimmer from "../components/shimmerUI/RestaurantMenuShimmer";
-import { MENU_ITEM_IMAGE_URL } from "../utils/constants";
-import useRestaurantMenu from "../utils/useRestaurantMenu";
-import AddToCartButton from "../components/AddToCartButton";
+import RestaurantMenuShimmer from "../shimmerUI/RestaurantMenuShimmer";
+import { MENU_ITEM_IMAGE_URL } from "../../utils/constants";
+import useRestaurantMenu from "../../hooks/useRestaurantMenu";
+import AddToCartButton from "./AddToCartButton";
 
 const ItemCard = ({ menuItem, name }) => {
   menuItem.restaurant = name;
   return (
-    <div
-      className="bg-slate-100 rounded-lg p-4 flex shadow"
-      data-testid="menu"
-    >
+    <div className="bg-slate-100 rounded-lg p-4 flex shadow" data-testid="menu">
       <img
         className="h-52 w-60 object-cover rounded-lg cursor-pointer"
         src={MENU_ITEM_IMAGE_URL + menuItem.card.info.imageId}
@@ -74,7 +71,11 @@ const RestaurantMenu = () => {
       </div>
       <div className="menu-items-container">
         {itemCards.map((menuItem) => (
-          <ItemCard key={menuItem.card.info.id} menuItem={menuItem} name={name} />
+          <ItemCard
+            key={menuItem.card.info.id}
+            menuItem={menuItem}
+            name={name}
+          />
         ))}
       </div>
     </div>

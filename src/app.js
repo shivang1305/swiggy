@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
-import Header from "./components/Header";
-import Body from "./components/Body";
-import Error from "./components/Error";
+import Header from "./components/header/Header";
+import Body from "./components/body/Body";
+import Error from "./components/error/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import Footer from "./components/Footer";
-import RestaurantMenu from "./pages/RestaurantMenu";
+import Footer from "./components/footer/Footer";
+import RestaurantMenu from "./components/restaurant/RestaurantMenu";
 import ProfileClass from "./components/ProfileClass";
 import Instamart from "./components/Instamart";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import CartPage from "./pages/CartPage";
+import CartPage from "./components/cart/CartPage";
 import About from "./components/About";
 import Contact from "./components/Contact";
-import Sidebar from "./components/Sidebar";
+import Sidebar from "./components/sidebar/Sidebar";
 
 const AppLayout = () => {
   const [user, setUser] = useState({

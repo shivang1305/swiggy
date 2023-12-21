@@ -1,11 +1,11 @@
-import RestaurantCard from "./RestaurantCard";
-import RestaurantsPageShimmer from "./shimmerUI/RestaurantsPageShimmer";
+import RestaurantCard from "../restaurant/RestaurantCard";
+import RestaurantsPageShimmer from "../shimmerUI/RestaurantsPageShimmer";
 import { Link } from "react-router-dom";
-import useAllRestaurants from "../hooks/useAllRestaurants";
-import OffersCarousel from "./OffersCarousel";
-import FilterSection from "./FilterSection";
+import useAllRestaurants from "../../hooks/useAllRestaurants";
+import OffersCarousel from "../offers/OffersCarousel";
+import FilterSection from "../filters/FilterSection";
 import { useSelector } from "react-redux";
-import { LOCATION_UNSERVICEABLE_URL } from "../utils/constants";
+import { LOCATION_UNSERVICEABLE_URL } from "../../utils/constants";
 
 const Body = () => {
   useAllRestaurants([]);

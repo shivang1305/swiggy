@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { CART_IMG_URL, LOGO_URL } from "../utils/constants";
-import useOnline from "../utils/useOnline";
+import { CART_IMG_URL, LOGO_URL } from "../../utils/constants";
+import useOnline from "../../hooks/useOnline";
 import OnlineSection from "./OnlineSection";
 import OfflineSection from "./OfflineSection";
 import { useSelector, useDispatch } from "react-redux";
-import { getNumberOfCartItems } from "../utils/helperFunctions";
-import { openMenu } from "../redux/slices/locationSlice";
+import { getNumberOfCartItems } from "../../utils/helperFunctions";
+import { openMenu } from "../../redux/slices/locationSlice";
 
 const Header = () => {
   const [btnLabel, setBtnLabel] = useState("Login");

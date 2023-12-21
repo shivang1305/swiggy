@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { SEARCH_LOCATION_API_URL } from "./constants";
-import { filterLocationAPIData } from "./helperFunctions";
+import { SEARCH_LOCATION_API_URL } from "../utils/constants";
+import { filterLocationAPIData } from "../utils/helperFunctions";
 
 const useLocationSuggestion = (locationQuery, setLocationSuggestions) => {
   useEffect(() => {

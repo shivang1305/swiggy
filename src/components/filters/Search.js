@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fillAllRestaurants } from "../redux/slices/restaurantsSlice";
-import { SEARCH_IMG_URL } from "../utils/constants";
+import { fillAllRestaurants } from "../../redux/slices/restaurantsSlice";
+import { SEARCH_IMG_URL } from "../../utils/constants";
 
 const Search = () => {
   const [searchText, setSearchText] = useState("");

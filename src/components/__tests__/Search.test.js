@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { fireEvent, render, waitFor } from "@testing-library/react";
-import Body from "../Body";
+import Body from "../body/Body";
 import { Provider } from "react-redux";
 import { StaticRouter } from "react-router-dom/server";
 import store from "../../utils/store";

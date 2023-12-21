@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import Header from "../Header";
+import Header from "../header/Header";
 import { Provider } from "react-redux";
 import { StaticRouter } from "react-router-dom/server";
 import store from "../../utils/store";

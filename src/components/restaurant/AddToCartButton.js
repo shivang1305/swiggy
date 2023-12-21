@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, removeItem } from "../redux/slices/cartSlice";
+import { addItem, removeItem } from "../../redux/slices/cartSlice";
 import ClearCartDialog from "./ClearCartDialog";
 import {
   getInitialItemValue,
   isRestaurantSame,
-} from "../utils/helperFunctions";
+} from "../../utils/helperFunctions";
 
 const AddToCartButton = ({ menuItem }) => {
   const cartItems = useSelector((store) => store.cart.items);

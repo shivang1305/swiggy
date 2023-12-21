@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { addItem, clearCart } from "../redux/slices/cartSlice";
+import { addItem, clearCart } from "../../redux/slices/cartSlice";
 
 const ClearCartDialog = ({ isOpen, onClose, setItemCount, menuItem }) => {
   const dispatch = useDispatch();

@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { closeMenu, setLocation } from "../redux/slices/locationSlice";
-import { GPS_IMG_URL, getCurrentLocationAPI } from "../utils/constants";
+import { closeMenu, setLocation } from "../../redux/slices/locationSlice";
+import { GPS_IMG_URL, getCurrentLocationAPI } from "../../utils/constants";
 import { useState } from "react";
-import { getLocationPromise } from "../utils/helperFunctions";
+import { getLocationPromise } from "../../utils/helperFunctions";
 import { useNavigate } from "react-router-dom";
-import useLocationSuggestion from "../utils/useLocationSuggestion";
+import useLocationSuggestion from "../../hooks/useLocationSuggestion";
 
 const Sidebar = () => {
   const isMenuOpen = useSelector((store) => store.location.isMenuOpen);

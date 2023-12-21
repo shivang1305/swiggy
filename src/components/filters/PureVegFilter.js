@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { toggleFilter } from "../utils/helperFunctions";
+import { toggleFilter } from "../../utils/helperFunctions";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  backupRestaurants,
   fillAllRestaurants,
-} from "../redux/slices/restaurantsSlice";
+  backupRestaurants,
+} from "../../redux/slices/restaurantsSlice";
 
-const TopRatedFilter = () => {
+const PureVegFilter = () => {
   const [isFilterClicked, setIsFilterClicked] = useState(false);
 
   const restaurantItems = useSelector(
@@ -16,20 +16,17 @@ const TopRatedFilter = () => {
   const dispatch = useDispatch();
 
   const handleFilterClicked = () => {
-    if (!isFilterClicked) dispatch(fillAllRestaurants(filterTopRestaurants()));
+    if (!isFilterClicked) dispatch(fillAllRestaurants(filterVegRestaurants()));
     else dispatch(backupRestaurants());
 
     toggleFilter(isFilterClicked, setIsFilterClicked);
   };
 
-  // to filter the restaurants on avg rating of above 4
-  const filterTopRestaurants = () => {
-    let highRatedRestaurants = restaurantItems.filter(
-      (res) => res.info.avgRating > 4
-    );
-    return highRatedRestaurants;
+  // to filter the veg restaurants
+  const filterVegRestaurants = () => {
+    let vegRestaurants = restaurantItems.filter((res) => res?.info?.veg);
+    return vegRestaurants;
   };
-
   return (
     <div
       className={`ml-3 cursor-pointer border-black border-2 rounded-lg p-2 ${
@@ -37,10 +34,10 @@ const TopRatedFilter = () => {
       }`}
     >
       <button className="filter-btn" onClick={() => handleFilterClicked()}>
-        Top Rated Restaurants
+        Pure Veg
       </button>
     </div>
   );
 };
 
-export default TopRatedFilter;
+export default PureVegFilter;

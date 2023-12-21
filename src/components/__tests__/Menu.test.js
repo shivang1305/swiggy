@@ -4,7 +4,7 @@ import RestaurantMenu from "../RestaurantMenu";
 import { Provider } from "react-redux";
 import { StaticRouter } from "react-router-dom/server";
 import { MENU_DATA } from "../mocks/data";
-import Header from "../Header";
+import Header from "../header/Header";
 import store from "../../redux/store";
 
 global.fetch = jest.fn(() => {
