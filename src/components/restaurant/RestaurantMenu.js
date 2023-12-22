@@ -3,6 +3,7 @@ import RestaurantMenuShimmer from "../shimmerUI/RestaurantMenuShimmer";
 import { MENU_ITEM_IMAGE_URL } from "../../utils/constants";
 import useRestaurantMenu from "../../hooks/useRestaurantMenu";
 import AddToCartButton from "./AddToCartButton";
+import { useSelector } from "react-redux";
 
 const ItemCard = ({ menuItem, name }) => {
   menuItem.restaurant = name;
@@ -31,9 +32,11 @@ const RestaurantMenu = () => {
   const { restaurantId } = useParams();
   // customized or user created hook
   // used to get restaurant menu data from the api
-  const restaurantInfo = useRestaurantMenu(restaurantId);
+  useRestaurantMenu(restaurantId);
 
-  if (restaurantInfo === null) return <RestaurantMenuShimmer />;
+  const restaurantInfo = useSelector((store) => store.restaurantMenu?.menu);
+
+  if (!restaurantInfo) return <RestaurantMenuShimmer />;
 
   const {
     name,
