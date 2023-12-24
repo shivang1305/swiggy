@@ -5,7 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 const useRestaurantMenu = (restaurantId) => {
   const dispatch = useDispatch();
-  // const menuData = useSelector((store) => store.restaurantMenu?.menu);
+
+  const menuData = useSelector((store) => store.restaurantMenu?.menu);
+  const resId = menuData?.cards[0]?.card?.card?.info?.id;
 
   useEffect(() => {
     getRestaurantData();
