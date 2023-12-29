@@ -6,6 +6,7 @@ const restaurantsSlice = createSlice({
     restaurantItems: [],
     backupItems: [],
     carouselItems: [],
+    isUnserviceable: false,
   },
   reducers: {
     fillAllRestaurants: (state, action) => {
@@ -20,6 +21,9 @@ const restaurantsSlice = createSlice({
     putCarouselItems: (state, action) => {
       state.carouselItems = action.payload;
     },
+    setUnserviceable: (state) => {
+      state.isUnserviceable = true;
+    },
   },
 });
 
@@ -28,5 +32,6 @@ export const {
   fillBackupRestaurants,
   backupRestaurants,
   putCarouselItems,
+  setUnserviceable,
 } = restaurantsSlice.actions;
 export default restaurantsSlice.reducer;

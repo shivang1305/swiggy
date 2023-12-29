@@ -15,9 +15,12 @@ const Body = () => {
   );
 
   const backupItems = useSelector((store) => store.restaurants.backupItems);
+  const isUnserviceable = useSelector(
+    (store) => store.restaurants.isUnserviceable
+  );
 
   // if the location is unserviceable
-  if (restaurantItems.length === 0) return <Unserviceable />;
+  if (isUnserviceable) return <Unserviceable />;
 
   // conditional rendering
   return backupItems.length === 0 ? (

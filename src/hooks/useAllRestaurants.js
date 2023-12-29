@@ -5,6 +5,7 @@ import {
   fillAllRestaurants,
   fillBackupRestaurants,
   putCarouselItems,
+  setUnserviceable,
 } from "../redux/slices/restaurantsSlice";
 
 const useAllRestaurants = () => {
@@ -22,6 +23,13 @@ const useAllRestaurants = () => {
     const data = await fetch(getAllRestaurantAPI(lat, lng));
 
     const jsonData = await data.json();
+
+    if (
+      jsonData?.data?.communication?.swiggyNotPresent?.swiggyNotPresent === true
+    ) {
+      dispatch(setUnserviceable());
+      return;
+    }
 
     const restaurantData =
       jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
