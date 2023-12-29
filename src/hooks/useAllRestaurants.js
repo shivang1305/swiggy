@@ -24,7 +24,7 @@ const useAllRestaurants = () => {
     const jsonData = await data.json();
 
     const restaurantData =
-      jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+      jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants; // optional chaining
 
     const carouselData =

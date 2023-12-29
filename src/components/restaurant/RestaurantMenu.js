@@ -9,9 +9,8 @@ const RestaurantMenu = () => {
   const { restaurantId } = useParams();
   // customized or user created hook
   // used to get restaurant menu data from the api
-  useRestaurantMenu(restaurantId);
 
-  const restaurantInfo = useSelector((store) => store.restaurantMenu?.menu);
+  const restaurantInfo = useRestaurantMenu(restaurantId);
 
   if (!restaurantInfo) return <RestaurantMenuShimmer />;
 
