@@ -11,11 +11,14 @@ import {
 const useAllRestaurants = () => {
   const dispatch = useDispatch();
   const location = useSelector((store) => store.location.location);
+  const restaurantItems = useSelector(
+    (store) => store.restaurants.restaurantItems
+  );
 
   const { lat, lng } = location;
 
   useEffect(() => {
-    getAllRestaurants();
+    restaurantItems.length === 0 && getAllRestaurants();
   }, [location]);
 
   // function to fetch the data
