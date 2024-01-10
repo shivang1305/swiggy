@@ -9,9 +9,6 @@ export const EMPTY_CART_IMAGE_URL =
 export const MENU_API_URL =
   "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.3670355&lng=79.4304381&restaurantId=";
 
-export const MENU_ITEM_IMAGE_URL =
-  "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_1024/";
-
 export const SEARCH_IMG_URL =
   "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Search_Icon.svg/1024px-Search_Icon.svg.png";
 

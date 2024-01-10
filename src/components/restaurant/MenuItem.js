@@ -1,14 +1,14 @@
 import React from "react";
 import AddToCartButton from "./AddToCartButton";
-import { MENU_ITEM_IMAGE_URL } from "../../utils/constants";
+import { CDN_URL } from "../../utils/constants";
 
 const MenuItem = ({ menuItem, name }) => {
   menuItem.restaurant = name;
   return (
-    <div className="bg-slate-100 rounded-lg p-4 flex shadow" data-testid="menu">
+    <div className="rounded-lg p-4 flex shadow" data-testid="menu">
       <img
-        className="h-52 w-60 object-cover rounded-lg cursor-pointer"
-        src={MENU_ITEM_IMAGE_URL + menuItem.card.info.imageId}
+        className="h-52 w-72 object-cover rounded-lg cursor-pointer"
+        src={CDN_URL + menuItem.card.info.imageId}
         alt={menuItem.card.info.name}
       />
       <div className="mt-4 ml-6">

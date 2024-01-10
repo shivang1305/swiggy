@@ -86,3 +86,12 @@ export const filterLocationAPIData = (locations) => {
 
   return locations;
 };
+
+// to get all the categories from the backend API
+export const getAllCategories = (categoriesArray) => {
+  return categoriesArray.filter(
+    (category) =>
+      category?.card?.card?.["@type"] ===
+      "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+  );
+};

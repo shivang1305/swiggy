@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { MENU_ITEM_IMAGE_URL } from "../../utils/constants";
+import { CDN_URL } from "../../utils/constants";
 import { addItem, clearCart, removeItem } from "../../redux/slices/cartSlice";
 import { calcTotalAmount } from "../../utils/helperFunctions";
 import { EMPTY_CART_IMAGE_URL } from "../../utils/constants";
@@ -22,7 +22,7 @@ const CartPage = () => {
               className="flex items-center border-b border-gray-300 py-4"
             >
               <img
-                src={MENU_ITEM_IMAGE_URL + item.card.info.imageId}
+                src={CDN_URL + item.card.info.imageId}
                 alt={item.card.info.name}
                 className="w-20 h-20 rounded-full mr-4"
               />

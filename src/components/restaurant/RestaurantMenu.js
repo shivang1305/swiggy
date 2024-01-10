@@ -4,6 +4,8 @@ import { MENU_ITEM_IMAGE_URL } from "../../utils/constants";
 import useRestaurantMenu from "../../hooks/useRestaurantMenu";
 import { useSelector } from "react-redux";
 import MenuItem from "./MenuItem";
+import MenuCategory from "./MenuCategory";
+import { getAllCategories } from "../../utils/helperFunctions";
 
 const RestaurantMenu = () => {
   const { restaurantId } = useParams();
@@ -27,8 +29,12 @@ const RestaurantMenu = () => {
     restaurantInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
       ?.card;
 
+  const categories = getAllCategories(
+    restaurantInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards
+  );
+
   return (
-    <div className="p-6 bg-slate-200">
+    <div className="p-6 w-9/12 mx-auto">
       <div className="restaurant-menu-page-header">
         <h2 className="text-4xl font-bold mb-4">{name}</h2>
         <div className="flex justify-between">
@@ -37,7 +43,7 @@ const RestaurantMenu = () => {
             <div className="restaurant-area-name">{areaName}</div>
           </div>
           <div className="items-center border-gray-300 border-solid border-2 shadow">
-            <div className="restaurant-rating">{avgRating}⭐</div>
+            <div className="restaurant-rating">⭐ {avgRating.toFixed(1)}</div>
             <hr />
             <div className="restaurant-total-rating">{totalRatingsString}</div>
           </div>
@@ -49,11 +55,10 @@ const RestaurantMenu = () => {
         <hr />
       </div>
       <div className="menu-items-container">
-        {itemCards.map((menuItem) => (
-          <MenuItem
-            key={menuItem.card.info.id}
-            menuItem={menuItem}
-            name={name}
+        {categories.map((category) => (
+          <MenuCategory
+            key={category?.card?.card?.title}
+            menuData={category?.card?.card}
           />
         ))}
       </div>
