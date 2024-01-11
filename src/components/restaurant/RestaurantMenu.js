@@ -59,6 +59,7 @@ const RestaurantMenu = () => {
           <MenuCategory
             key={category?.card?.card?.title}
             menuData={category?.card?.card}
+            restaurantName={name}
           />
         ))}
       </div>

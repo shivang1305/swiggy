@@ -24,6 +24,12 @@ export const LOCATION_UNSERVICEABLE_URL =
 export const SEARCH_LOCATION_API_URL =
   "https://api.locationiq.com/v1/autocomplete?key=pk.52edb4951867ed3df1b858c24daeae0f&q=";
 
+export const VEG_ICON_URL =
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Veg_symbol.svg/1024px-Veg_symbol.svg.png";
+
+export const NON_VEG_ICON_URL =
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Non_veg_symbol.svg/1024px-Non_veg_symbol.svg.png";
+
 export const getAllRestaurantAPI = (lat, lng) =>
   `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}&page_type=DESKTOP_WEB_LISTING`;
 

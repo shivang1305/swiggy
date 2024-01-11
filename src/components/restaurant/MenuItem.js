@@ -1,24 +1,32 @@
 import React from "react";
 import AddToCartButton from "./AddToCartButton";
-import { CDN_URL } from "../../utils/constants";
+import { CDN_URL, NON_VEG_ICON_URL, VEG_ICON_URL } from "../../utils/constants";
 
-const MenuItem = ({ menuItem, name }) => {
-  menuItem.restaurant = name;
+const MenuItem = ({ menuItem, restaurantName }) => {
+  const { name, imageId, description, price, isVeg } = menuItem?.card?.info;
+  menuItem.restaurant = restaurantName;
   return (
     <div className="rounded-lg p-4 flex shadow" data-testid="menu">
       <img
         className="h-52 w-72 object-cover rounded-lg cursor-pointer"
-        src={CDN_URL + menuItem.card.info.imageId}
-        alt={menuItem.card.info.name}
+        src={CDN_URL + imageId}
+        alt={name}
       />
       <div className="mt-4 ml-6">
-        <h3 className="text-base font-bold mb-2">{menuItem.card.info.name}</h3>
-        <p className="text-sm text-gray-500 mb-2">
-          {menuItem.card.info.description}
-        </p>
-        <p className="text-base font-bold mb-2">
-          ₹{menuItem.card.info.price / 100}
-        </p>
+        <h3 className="text-base font-bold mb-2 flex">
+          {name}
+          {isVeg ? (
+            <img className="h-5 w-5 ml-2" src={VEG_ICON_URL} alt="veg-icon" />
+          ) : (
+            <img
+              className="h-5 w-5 ml-2"
+              src={NON_VEG_ICON_URL}
+              alt="veg-icon"
+            />
+          )}
+        </h3>
+        <p className="text-sm text-gray-500 mb-2">{description}</p>
+        <p className="text-base font-bold mb-2">₹{price / 100}</p>
         <AddToCartButton menuItem={menuItem} />
       </div>
     </div>

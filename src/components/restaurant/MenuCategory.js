@@ -2,7 +2,7 @@ import { useState } from "react";
 import MenuItem from "./MenuItem";
 import { AiFillCaretDown } from "react-icons/ai";
 
-const MenuCategory = ({ menuData }) => {
+const MenuCategory = ({ menuData, restaurantName }) => {
   const [showMenuItems, setShowMenuItems] = useState(true);
 
   const handleToggleMenuItems = () => {
@@ -28,7 +28,7 @@ const MenuCategory = ({ menuData }) => {
           <MenuItem
             key={menuItem.card.info.id}
             menuItem={menuItem}
-            name={name}
+            restaurantName={restaurantName}
           />
         ))}
     </div>
