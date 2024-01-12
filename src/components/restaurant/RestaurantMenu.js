@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import RestaurantMenuShimmer from "../shimmerUI/RestaurantMenuShimmer";
 import { MENU_ITEM_IMAGE_URL } from "../../utils/constants";
@@ -8,6 +9,7 @@ import MenuCategory from "./MenuCategory";
 import { getAllCategories } from "../../utils/helperFunctions";
 
 const RestaurantMenu = () => {
+  const [isVegFilter, setIsVegFilter] = useState(false);
   const { restaurantId } = useParams();
   // customized or user created hook
   // used to get restaurant menu data from the api
@@ -15,6 +17,10 @@ const RestaurantMenu = () => {
   const restaurantInfo = useRestaurantMenu(restaurantId);
 
   if (!restaurantInfo) return <RestaurantMenuShimmer />;
+
+  const handleShowVegItemsOnly = () => {
+    setIsVegFilter(!isVegFilter);
+  };
 
   const {
     name,
@@ -52,6 +58,13 @@ const RestaurantMenu = () => {
           <div className="font-semibold text-lg ml-3">22 mins</div>
           <div className="font-semibold text-lg ml-3">{costForTwoMessage}</div>
         </div>
+        <button
+          className="border border-black mb-2 p-2 m-2 shadow-lg rounded bg-gray-300"
+          onClick={handleShowVegItemsOnly}
+        >
+          Veg
+        </button>
+        <hr />
         <hr />
       </div>
       <div className="menu-items-container">
@@ -60,6 +73,7 @@ const RestaurantMenu = () => {
             key={category?.card?.card?.title}
             menuData={category?.card?.card}
             restaurantName={name}
+            isVegFilter={isVegFilter}
           />
         ))}
       </div>

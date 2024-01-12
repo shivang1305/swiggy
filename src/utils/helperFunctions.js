@@ -95,3 +95,11 @@ export const getAllCategories = (categoriesArray) => {
       "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
   );
 };
+
+// to get all the veg menu items from a restaurant
+export const getVegMenuItems = (menuData) => {
+  const vegMenuItems = menuData?.itemCards?.filter(
+    (menuItem) => menuItem.card.info.isVeg === 1
+  );
+  return vegMenuItems;
+};
