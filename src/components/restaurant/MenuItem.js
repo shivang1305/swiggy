@@ -3,7 +3,9 @@ import AddToCartButton from "./AddToCartButton";
 import { CDN_URL, NON_VEG_ICON_URL, VEG_ICON_URL } from "../../utils/constants";
 
 const MenuItem = ({ menuItem, restaurantName }) => {
-  const { name, imageId, description, price, isVeg } = menuItem?.card?.info;
+  const { name, imageId, description, price, isVeg, ribbon } =
+    menuItem?.card?.info;
+
   menuItem.restaurant = restaurantName;
   return (
     <div className="rounded-lg p-4 flex shadow" data-testid="menu">
@@ -23,7 +25,8 @@ const MenuItem = ({ menuItem, restaurantName }) => {
               src={NON_VEG_ICON_URL}
               alt="veg-icon"
             />
-          )}
+          )}{" "}
+          <span className="text-sm ml-2 text-yellow-500">{ribbon?.text}</span>
         </h3>
         <p className="text-sm text-gray-500 mb-2">{description}</p>
         <p className="text-base font-bold mb-2">₹{price / 100}</p>

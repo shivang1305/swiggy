@@ -1,6 +1,6 @@
 import { useState } from "react";
 import MenuItem from "./MenuItem";
-import { AiFillCaretDown } from "react-icons/ai";
+import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 import { getVegMenuItems } from "../../utils/helperFunctions";
 
 const MenuCategory = ({ menuData, restaurantName, isVegFilter }) => {
@@ -27,7 +27,11 @@ const MenuCategory = ({ menuData, restaurantName, isVegFilter }) => {
           <span className="font-bold text-lg">
             {menuData?.title} ({menuData?.itemCards?.length})
           </span>
-          <AiFillCaretDown className="h-10" />
+          {showMenuItems ? (
+            <AiFillCaretUp className="h-10" />
+          ) : (
+            <AiFillCaretDown className="h-10" />
+          )}
         </div>
       </div>
       {/* Menu Items */}
