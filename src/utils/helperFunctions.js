@@ -97,8 +97,8 @@ export const getAllCategories = (categoriesArray) => {
 };
 
 // to get all the veg menu items from a restaurant
-export const getVegMenuItems = (menuData) => {
-  const vegMenuItems = menuData?.itemCards?.filter(
+export const getVegMenuItems = (menuArray) => {
+  const vegMenuItems = menuArray.filter(
     (menuItem) => menuItem.card.info.isVeg === 1
   );
   return vegMenuItems;

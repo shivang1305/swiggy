@@ -31,10 +31,6 @@ const RestaurantMenu = () => {
     totalRatingsString,
   } = restaurantInfo?.cards[0]?.card?.card?.info;
 
-  const { itemCards } =
-    restaurantInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
-      ?.card;
-
   const categories = getAllCategories(
     restaurantInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards
   );

@@ -5,14 +5,15 @@ import { getVegMenuItems } from "../../utils/helperFunctions";
 
 const MenuCategory = ({ menuData, restaurantName, isVegFilter }) => {
   const [showMenuItems, setShowMenuItems] = useState(true);
-  const [menuItemData, setMenuItemData] = useState(menuData);
+  const [menuItemData, setMenuItemData] = useState(menuData.itemCards);
 
   const handleToggleMenuItems = () => {
     setShowMenuItems(!showMenuItems);
   };
 
   if (isVegFilter) {
-    setMenuItemData((showMenuItems.itemCards = getVegMenuItems(menuData)));
+    setMenuItemData(getVegMenuItems(menuData?.itemCards));
+    console.log(getVegMenuItems(menuData?.itemCards));
   }
 
   return (
@@ -24,14 +25,14 @@ const MenuCategory = ({ menuData, restaurantName, isVegFilter }) => {
           onClick={handleToggleMenuItems}
         >
           <span className="font-bold text-lg">
-            {menuItemData?.title} ({menuItemData?.itemCards?.length})
+            {menuData?.title} ({menuData?.itemCards?.length})
           </span>
           <AiFillCaretDown className="h-10" />
         </div>
       </div>
       {/* Menu Items */}
       {showMenuItems &&
-        menuItemData?.itemCards?.map((menuItem) => (
+        menuItemData.map((menuItem) => (
           <MenuItem
             key={menuItem.card.info.id}
             menuItem={menuItem}
