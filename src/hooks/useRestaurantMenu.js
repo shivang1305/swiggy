@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { MENU_API_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
-import { fillMenuItems } from "../redux/slices/menuSlice";
+import { fillBackupItems, fillMenuItems } from "../redux/slices/menuSlice";
 
 const useRestaurantMenu = (restaurantId) => {
   const [restaurantInfo, setRestaurantInfo] = useState(null);
@@ -16,7 +16,18 @@ const useRestaurantMenu = (restaurantId) => {
 
     const restaurantData = await data.json();
     setRestaurantInfo(restaurantData?.data);
-    dispatch(fillMenuItems(restaurantData?.data?.cards[2]));
+    dispatch(
+      fillMenuItems(
+        restaurantData?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR
+          ?.cards
+      )
+    );
+    dispatch(
+      fillBackupItems(
+        restaurantData?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR
+          ?.cards
+      )
+    );
   };
 
   return restaurantInfo;

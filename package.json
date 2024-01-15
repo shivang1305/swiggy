@@ -23,6 +23,7 @@
     "@parcel/babel-preset-env": "^2.9.3",
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.17.0",
+    "babel-plugin-transform-remove-strict-mode": "^0.0.2",
     "formik": "^2.4.1",
     "parcel": "^2.9.3",
     "react": "^18.2.0",

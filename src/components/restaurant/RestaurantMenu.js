@@ -3,23 +3,56 @@ import { useParams } from "react-router-dom";
 import RestaurantMenuShimmer from "../shimmerUI/RestaurantMenuShimmer";
 import { MENU_ITEM_IMAGE_URL } from "../../utils/constants";
 import useRestaurantMenu from "../../hooks/useRestaurantMenu";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MenuItem from "./MenuItem";
 import MenuCategory from "./MenuCategory";
-import { getAllCategories } from "../../utils/helperFunctions";
+import {
+  getAllCategories,
+  getVegMenuItems,
+  toggleFilter,
+} from "../../utils/helperFunctions";
+import { backupItems, fillMenuItems } from "../../redux/slices/menuSlice";
 
 const RestaurantMenu = () => {
-  const [isVegFilter, setIsVegFilter] = useState(false);
+  const [isVegFilterClicked, setIsVegFilterClicked] = useState(false);
   const { restaurantId } = useParams();
-  // customized or user created hook
-  // used to get restaurant menu data from the api
+
+  const dispatch = useDispatch();
+  const menuItems = useSelector((store) => store.menu.menuItems);
 
   const restaurantInfo = useRestaurantMenu(restaurantId);
 
   if (!restaurantInfo) return <RestaurantMenuShimmer />;
 
   const handleShowVegItemsOnly = () => {
-    setIsVegFilter(!isVegFilter);
+    // if (!isVegFilterClicked) {
+    // filter the restaurant menu items data
+    let vegMenuItems = [];
+    menuItems.map((menuItem) => {
+      let { itemCards } = menuItem?.card?.card;
+      const type = menuItem?.card?.card?.["@type"];
+      if (
+        type === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+      ) {
+        itemCards = getVegMenuItems(itemCards);
+
+        const vegMenuItemObj = {
+          ...menuItem?.card?.card,
+        };
+
+        delete vegMenuItemObj?.itemCards;
+        vegMenuItemObj.itemCards = itemCards;
+        // console.log(vegMenuItemObj);
+
+        vegMenuItems.push(vegMenuItemObj);
+      }
+    });
+    if (vegMenuItems) dispatch(fillMenuItems(vegMenuItems));
+    // } else {
+    //   dispatch(backupItems());
+    // }
+
+    // toggleFilter(isVegFilterClicked, setIsVegFilterClicked);
   };
 
   const {
@@ -31,9 +64,8 @@ const RestaurantMenu = () => {
     totalRatingsString,
   } = restaurantInfo?.cards[0]?.card?.card?.info;
 
-  const categories = getAllCategories(
-    restaurantInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards
-  );
+  const categories = getAllCategories(menuItems);
+  console.log(categories);
 
   return (
     <div className="p-6 w-9/12 mx-auto">
@@ -69,7 +101,6 @@ const RestaurantMenu = () => {
             key={category?.card?.card?.title}
             menuData={category?.card?.card}
             restaurantName={name}
-            isVegFilter={isVegFilter}
           />
         ))}
       </div>
