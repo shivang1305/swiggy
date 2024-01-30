@@ -3,8 +3,10 @@ import AddToCartButton from "./AddToCartButton";
 import { CDN_URL, NON_VEG_ICON_URL, VEG_ICON_URL } from "../../utils/constants";
 
 const MenuItem = ({ menuItem, restaurantName }) => {
-  const { name, imageId, description, price, isVeg, ribbon } =
+  const { name, imageId, description, price, isVeg, ribbon, defaultPrice } =
     menuItem?.card?.info;
+
+  const totalPrice = price || defaultPrice;
 
   menuItem.restaurant = restaurantName;
   return (
@@ -29,7 +31,7 @@ const MenuItem = ({ menuItem, restaurantName }) => {
           <span className="text-sm ml-2 text-yellow-500">{ribbon?.text}</span>
         </h3>
         <p className="text-sm text-gray-500 mb-2">{description}</p>
-        <p className="text-base font-bold mb-2">₹{price / 100}</p>
+        <p className="text-base font-bold mb-2">₹{totalPrice / 100}</p>
         <AddToCartButton menuItem={menuItem} />
       </div>
     </div>
