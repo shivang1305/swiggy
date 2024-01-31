@@ -103,3 +103,14 @@ export const getVegMenuItems = (menuArray) => {
   );
   return vegMenuItems;
 };
+
+// to get the discount heading on restaurant card
+export const getDiscountHeading = (aggregatedDiscountInfoV3) => {
+  const { header, subHeader } = aggregatedDiscountInfoV3;
+  let discountHeading;
+
+  if (subHeader) discountHeading = `${header} ${subHeader}`;
+  else discountHeading = header;
+
+  return discountHeading;
+};
