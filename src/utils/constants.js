@@ -6,6 +6,9 @@ export const LOGO_URL = "https://cdn.worldvectorlogo.com/logos/swiggy-1.svg";
 export const EMPTY_CART_IMAGE_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/2xempty_cart_yfxml0";
 
+export const MEDIA_ASSET_URL =
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/";
+
 export const MENU_API_URL =
   "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.3670355&lng=79.4304381&restaurantId=";
 

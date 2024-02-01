@@ -1,4 +1,4 @@
-import { CDN_URL } from "../../utils/constants";
+import { CDN_URL, MEDIA_ASSET_URL } from "../../utils/constants";
 import { getDiscountHeading } from "../../utils/helperFunctions";
 
 // writing CSS in JSX
@@ -27,9 +27,9 @@ const RestaurantCard = (props) => {
 
   return (
     <div className="w-80 mx-8 my-8 bg-white text-black rounded-lg overflow-hidden shadow-md border border-gray-200 hover:cursor-pointer transition duration-300 ease-in-out transform hover:scale-105">
-      <div className="relative">
+      <div className="relative drop-shadow-lg">
         {aggregatedDiscountInfoV3 && (
-          <div className="p-1 m-1 absolute bottom-0 text-white font-bold text-2xl">
+          <div className="p-1 m-1 w-full absolute bottom-0 text-white font-bold text-2xl">
             {getDiscountHeading(aggregatedDiscountInfoV3)}
           </div>
         )}
@@ -56,6 +56,20 @@ const RestaurantCard = (props) => {
       </div>
     </div>
   );
+};
+
+export const withLabelRestaurant = (RestaurantCard) => {
+  return ({ resData }) => {
+    const { logo } = resData?.info?.loyaltyDiscoverPresentationInfo?.logoCtx;
+    return (
+      <div>
+        <label className="absolute">
+          <img src={MEDIA_ASSET_URL + "/" + logo} alt="label-logo" />
+        </label>
+        <RestaurantCard resData={resData} />
+      </div>
+    );
+  };
 };
 
 export default RestaurantCard;

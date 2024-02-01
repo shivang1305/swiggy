@@ -1,4 +1,6 @@
-import RestaurantCard from "../restaurant/RestaurantCard";
+import RestaurantCard, {
+  withLabelRestaurant,
+} from "../restaurant/RestaurantCard";
 import RestaurantsPageShimmer from "../shimmerUI/RestaurantsPageShimmer";
 import { Link } from "react-router-dom";
 import useAllRestaurants from "../../hooks/useAllRestaurants";
@@ -18,6 +20,9 @@ const Body = () => {
   const isUnserviceable = useSelector(
     (store) => store.restaurants.isUnserviceable
   );
+
+  // get the modified restaurant card with a label
+  const LabeledRestaurantCard = withLabelRestaurant(RestaurantCard);
 
   // if the location is unserviceable
   if (isUnserviceable) return <Unserviceable />;
@@ -43,7 +48,11 @@ const Body = () => {
                 key={resData.info.id}
                 to={"/restaurant/" + resData.info.id}
               >
-                <RestaurantCard resData={resData} />
+                {resData?.info?.loyaltyDiscoverPresentationInfo ? (
+                  <LabeledRestaurantCard resData={resData} />
+                ) : (
+                  <RestaurantCard resData={resData} />
+                )}
               </Link>
             );
           })}

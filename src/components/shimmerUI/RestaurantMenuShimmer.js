@@ -1,8 +1,7 @@
 const RestaurantMenuShimmer = () => {
   const shimmerItems = Array.from({ length: 8 }, (_, index) => index); // Generating an array of 8 shimmer items
   return (
-    <div className="restaurant-menu-page">
-      <h2 className="restaurant-menu-heading">Menu</h2>
+    <div className="restaurant-menu-page w-9/12 mx-auto">
       <div className="shimmer-items-container">
         {shimmerItems.map((item) => (
           <div className="bg-gray-200 rounded-lg shadow p-4" key={item}>
