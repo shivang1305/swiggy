@@ -9,9 +9,6 @@ export const EMPTY_CART_IMAGE_URL =
 export const MEDIA_ASSET_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/";
 
-export const MENU_API_URL =
-  "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.3670355&lng=79.4304381&restaurantId=";
-
 export const SEARCH_IMG_URL =
   "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Search_Icon.svg/1024px-Search_Icon.svg.png";
 
@@ -35,6 +32,9 @@ export const NON_VEG_ICON_URL =
 
 export const getAllRestaurantAPI = (lat, lng) =>
   `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}&page_type=DESKTOP_WEB_LISTING`;
+
+export const getMenuAPIURL = (lat, lng, resId) =>
+  `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${lat}&lng=${lng}&restaurantId=${resId}`;
 
 export const getCurrentLocationAPI = (lat, lng) =>
   `https://us1.locationiq.com/v1/reverse?key=pk.52edb4951867ed3df1b858c24daeae0f&lat=${lat}&lon=${lng}&format=json`;

@@ -1,16 +1,19 @@
 import { useState, useEffect } from "react";
-import { MENU_API_URL } from "../utils/constants";
-import { useDispatch } from "react-redux";
+import { getMenuAPIURL } from "../utils/constants";
+import { useSelector } from "react-redux";
 
 const useRestaurantMenu = (restaurantId) => {
   const [restaurantInfo, setRestaurantInfo] = useState(null);
+  const location = useSelector((store) => store.location?.location);
+
+  const { lat, lng } = location;
 
   useEffect(() => {
     getRestaurantData();
   }, []);
 
   const getRestaurantData = async () => {
-    const data = await fetch(MENU_API_URL + restaurantId);
+    const data = await fetch(getMenuAPIURL(lat, lng, restaurantId));
 
     const restaurantData = await data.json();
 
