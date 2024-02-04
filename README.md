@@ -4,13 +4,13 @@ Welcome to the Swiggy Clone repository! This project is a full-stack web applica
 
 ## Screenshots
 
-![Home Page](https://github.com/shivang1305/swiggy/tree/testing/images/HomePage.jpg?raw=true)
-![Restaurant Page](https://github.com/shivang1305/swiggy/tree/testing/images/RestaurantPage.jpg?raw=true)
-![Restaurant Categories](https://github.com/shivang1305/swiggy/tree/testing/images/RestaurantCategories.jpg?raw=true)
-![Location](https://github.com/shivang1305/swiggy/tree/testing/images/Location.jpg?raw=true)
-![Cart Page](https://github.com/shivang1305/swiggy/tree/testing/images/CartPage.jpg?raw=true)
-![Empty Cart](https://github.com/shivang1305/swiggy/tree/testing/images/EmptyCart.jpg?raw=true)
-![Unserviceable Location](https://github.com/shivang1305/swiggy/tree/testing/images/UnserviceableLocation.jpg?raw=true)
+![Home Page](https://github.com/shivang1305/swiggy/tree/testing/images/HomePage.png?raw=true)
+![Restaurant Page](https://github.com/shivang1305/swiggy/tree/testing/images/RestaurantPage.png?raw=true)
+![Restaurant Categories](https://github.com/shivang1305/swiggy/tree/testing/images/RestaurantCategories.png?raw=true)
+![Location](https://github.com/shivang1305/swiggy/tree/testing/images/Location.png?raw=true)
+![Cart Page](https://github.com/shivang1305/swiggy/tree/testing/images/CartPage.png?raw=true)
+![Empty Cart](https://github.com/shivang1305/swiggy/tree/testing/images/EmptyCart.png?raw=true)
+![Unserviceable Location](https://github.com/shivang1305/swiggy/tree/testing/images/UnserviceableLocation.png?raw=true)
 
 ## Features
 
