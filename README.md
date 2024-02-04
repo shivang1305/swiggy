@@ -2,6 +2,16 @@
 
 Welcome to the Swiggy Clone repository! This project is a full-stack web application built with React.js, Redux Toolkit, Tailwind CSS, and integrates with Swiggy's live APIs to provide a Swiggy-like experience.
 
+## Screenshots
+
+![Home Page](https://github.com/shivang1305/swiggy/tree/testing/images/HomePage.jpg?raw=true)
+![Restaurant Page](https://github.com/shivang1305/swiggy/tree/testing/images/RestaurantPage.jpg?raw=true)
+![Restaurant Categories](https://github.com/shivang1305/swiggy/tree/testing/images/RestaurantCategories.jpg?raw=true)
+![Location](https://github.com/shivang1305/swiggy/tree/testing/images/Location.jpg?raw=true)
+![Cart Page](https://github.com/shivang1305/swiggy/tree/testing/images/CartPage.jpg?raw=true)
+![Empty Cart](https://github.com/shivang1305/swiggy/tree/testing/images/EmptyCart.jpg?raw=true)
+![Unserviceable Location](https://github.com/shivang1305/swiggy/tree/testing/images/UnserviceableLocation.jpg?raw=true)
+
 ## Features
 
 1. **User Authentication**: User authentication with restricted routing ensures that users can access only the appropriate content.
@@ -46,7 +56,6 @@ To run this project locally, follow these steps:
    ```
 
 3. Set up environment variables: Create a `.env` file and add your API keys or credentials.
-   
 4. Start the development server:
 
    ```bash
@@ -55,8 +64,8 @@ To run this project locally, follow these steps:
 
 5. Open your browser and navigate to `http://localhost:1234` to access the application.
 
+## Note:
 
-## Note: 
 This project is a clone application created for learning and demonstration purposes. It is not associated with Swiggy and is not intended for commercial use.
 
 Happy coding!
