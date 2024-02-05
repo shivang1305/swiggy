@@ -5,24 +5,31 @@ Welcome to the Swiggy Clone repository! This project is a full-stack web applica
 ## Screenshots
 
 ### Home Page
+
 ![Home Page](https://github.com/shivang1305/swiggy/blob/testing/images/HomePage.png)
 
 ### Restaurant Page
+
 ![Restaurant Page](https://github.com/shivang1305/swiggy/blob/testing/images/RestaurantPage.png?raw=true)
 
 ### Restaurant Categories
+
 ![Restaurant Categories](https://github.com/shivang1305/swiggy/blob/testing/images/RestaurantCategories.png?raw=true)
 
 ### Location
+
 ![Location](https://github.com/shivang1305/swiggy/blob/testing/images/Location.png?raw=true)
 
 ### Cart Page
+
 ![Cart Page](https://github.com/shivang1305/swiggy/blob/testing/images/CartPage.png?raw=true)
 
 ### Empty Cart
+
 ![Empty Cart](https://github.com/shivang1305/swiggy/blob/testing/images/EmptyCart.png?raw=true)
 
 ### Unserviceable Location
+
 ![Unserviceable Location](https://github.com/shivang1305/swiggy/blob/testing/images/UnserviceableLocation.png?raw=true)
 
 ## Features
