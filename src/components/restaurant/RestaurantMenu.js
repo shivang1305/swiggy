@@ -12,7 +12,7 @@ const RestaurantMenu = () => {
   if (!restaurantInfo) return <RestaurantMenuShimmer />;
 
   const menuItems =
-    restaurantInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+    restaurantInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
 
   const categories = getAllCategories(menuItems);
 
@@ -23,7 +23,7 @@ const RestaurantMenu = () => {
     avgRating,
     areaName,
     totalRatingsString,
-  } = restaurantInfo?.cards[0]?.card?.card?.info;
+  } = restaurantInfo?.cards[2]?.card?.card?.info;
 
   return (
     <div className="p-6 w-9/12 mx-auto">
