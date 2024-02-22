@@ -2,8 +2,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { CDN_URL } from "../../utils/constants";
 import { addItem, clearCart, removeItem } from "../../redux/slices/cartSlice";
 import { calcTotalAmount } from "../../utils/helperFunctions";
-import { EMPTY_CART_IMAGE_URL } from "../../utils/constants";
-import { Link } from "react-router-dom";
 import EmptyCart from "./EmptyCart";
 
 const CartPage = () => {
@@ -40,7 +38,7 @@ const CartPage = () => {
                 </div>
                 <h3 className="text-base font-semibold">
                   Price: Rs.
-                  {(item.card.info.price.toFixed(2) / 100) * item.quantity}
+                  {(item.card.info.price / 100).toFixed(2) * item.quantity}
                 </h3>
               </div>
             </div>

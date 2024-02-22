@@ -43,7 +43,7 @@ export const calcTotalAmount = (cartItems) => {
   cartItems.map((item) => {
     sum += (item.card.info.price / 100) * item.quantity;
   });
-  return sum;
+  return sum.toFixed(2);
 };
 
 // to get the current location of the user
