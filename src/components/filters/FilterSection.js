@@ -6,10 +6,8 @@ const FilterSection = () => {
   return (
     <div className="flex m-7">
       <Search />
-      <div className="flex">
-        <PureVegFilter />
-        <TopRatedFilter />
-      </div>
+      <PureVegFilter />
+      <TopRatedFilter />
     </div>
   );
 };

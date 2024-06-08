@@ -24,7 +24,7 @@ const Search = () => {
     <div className="flex">
       <input
         data-testid="search-input "
-        className="border-black border-2 rounded-lg p-2"
+        className="border-black border-2 rounded-lg p-2 w-full"
         placeholder="Restaurant, Dish, Cuisine"
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
