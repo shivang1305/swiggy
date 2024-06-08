@@ -3,10 +3,18 @@ import { CDN_URL } from "../../utils/constants";
 import { addItem, clearCart, removeItem } from "../../redux/slices/cartSlice";
 import { calcTotalAmount } from "../../utils/helperFunctions";
 import EmptyCart from "./EmptyCart";
+import { useNavigate } from "react-router-dom";
 
 const CartPage = () => {
   const cartItems = useSelector((store) => store.cart.items);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const onCheckout = () => {
+    console.log("On checkout clicked...");
+
+    navigate("/order-success");
+  };
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -48,7 +56,10 @@ const CartPage = () => {
               Total: Rs.{calcTotalAmount(cartItems)}
             </div>
             <div className="mt-8 flex justify-end">
-              <button className="bg-green-400 text-white px-4 py-2 rounded">
+              <button
+                className="bg-green-400 text-white px-4 py-2 rounded"
+                onClick={onCheckout}
+              >
                 Checkout
               </button>
               <button

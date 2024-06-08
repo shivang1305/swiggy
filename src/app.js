@@ -6,8 +6,6 @@ import Error from "./components/error/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Footer from "./components/footer/Footer";
 import RestaurantMenu from "./components/restaurant/RestaurantMenu";
-import ProfileClass from "./components/ProfileClass";
-import Instamart from "./components/Instamart";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import store from "./redux/store";
@@ -15,6 +13,7 @@ import CartPage from "./components/cart/CartPage";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Sidebar from "./components/sidebar/Sidebar";
+import OrderSuccess from "./components/order/OrderSuccess";
 
 const AppLayout = () => {
   const [user, setUser] = useState({
@@ -49,12 +48,6 @@ const appRouter = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
-        children: [
-          {
-            path: "profile", // no '/' is needed here as if we put "/profile" it will be treated as "localhost:1234/profile" instead of "localhost:1234/about/profile"
-            element: <ProfileClass name="Shivang" />,
-          },
-        ],
       },
       {
         path: "/contact",
@@ -65,12 +58,12 @@ const appRouter = createBrowserRouter([
         element: <RestaurantMenu />,
       },
       {
-        path: "/instamart",
-        element: <Instamart />,
-      },
-      {
         path: "/cart",
         element: <CartPage />,
+      },
+      {
+        path: "/order-success",
+        element: <OrderSuccess />,
       },
     ],
   },
