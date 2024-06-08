@@ -11,8 +11,6 @@ const CartPage = () => {
   const navigate = useNavigate();
 
   const onCheckout = () => {
-    console.log("On checkout clicked...");
-
     navigate("/order-success");
   };
 

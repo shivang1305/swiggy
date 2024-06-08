@@ -1,9 +1,12 @@
 import Lottie from "react-lottie";
-import orderSuccessAnimation from "./order-sucess-animation.json"; // Replace with the path to your animation JSON file
+import orderSuccessAnimation from "./order-sucess-animation.json";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { clearCart } from "../../redux/slices/cartSlice";
 
 const OrderSuccess = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const defaultOptions = {
     loop: true,
@@ -15,6 +18,7 @@ const OrderSuccess = () => {
   };
 
   const handleGoToHome = () => {
+    dispatch(clearCart());
     navigate("/");
   };
 
