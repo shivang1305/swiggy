@@ -30,6 +30,9 @@ export const VEG_ICON_URL =
 export const NON_VEG_ICON_URL =
   "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Non_veg_symbol.svg/1024px-Non_veg_symbol.svg.png";
 
+export const FOOD_ICON =
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/Image-login_btpq7r";
+
 export const getAllRestaurantAPI = (lat, lng) =>
   `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}&page_type=DESKTOP_WEB_LISTING`;
 
