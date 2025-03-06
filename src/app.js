@@ -14,6 +14,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import LocationSidebar from "./components/sidebar/LocationSidebar";
 import OrderSuccess from "./components/order/OrderSuccess";
+import AuthSidebar from "./components/sidebar/AuthSidebar";
 
 const AppLayout = () => {
   const [user, setUser] = useState({
@@ -27,6 +28,7 @@ const AppLayout = () => {
         <UserContext.Provider value={{ user, setUser }}>
           <Header />
           <LocationSidebar />
+          <AuthSidebar />
           <Outlet />
           <Footer />
         </UserContext.Provider>
