@@ -7,7 +7,7 @@ import { getLocationPromise } from "../../utils/helperFunctions";
 import { useNavigate } from "react-router-dom";
 import useLocationSuggestion from "../../hooks/useLocationSuggestion";
 
-const Sidebar = () => {
+const LocationSidebar = () => {
   const isMenuOpen = useSelector((store) => store.location.isMenuOpen);
 
   const dispatch = useDispatch();
@@ -123,4 +123,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default LocationSidebar;

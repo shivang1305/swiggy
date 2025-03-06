@@ -12,7 +12,7 @@ import store from "./redux/store";
 import CartPage from "./components/cart/CartPage";
 import About from "./components/About";
 import Contact from "./components/Contact";
-import Sidebar from "./components/sidebar/Sidebar";
+import LocationSidebar from "./components/sidebar/LocationSidebar";
 import OrderSuccess from "./components/order/OrderSuccess";
 
 const AppLayout = () => {
@@ -26,7 +26,7 @@ const AppLayout = () => {
       <Provider store={store}>
         <UserContext.Provider value={{ user, setUser }}>
           <Header />
-          <Sidebar />
+          <LocationSidebar />
           <Outlet />
           <Footer />
         </UserContext.Provider>
