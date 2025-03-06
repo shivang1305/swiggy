@@ -1,5 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaRegUser } from "react-icons/fa";
+import { LuSearch } from "react-icons/lu";
+import { BiSolidOffer } from "react-icons/bi";
+import { IoHelpBuoyOutline } from "react-icons/io5";
+import { IoCartOutline } from "react-icons/io5";
 import { CART_IMG_URL, LOGO_URL } from "../../utils/constants";
 import useOnline from "../../hooks/useOnline";
 import OnlineSection from "./OnlineSection";
@@ -9,17 +14,18 @@ import { getNumberOfCartItems } from "../../utils/helperFunctions";
 import { openMenu } from "../../redux/slices/locationSlice";
 
 const Header = () => {
-  const [btnLabel, setBtnLabel] = useState("Login");
+  // const [btnLabel, setBtnLabel] = useState("Login");
   const isOnline = useOnline();
 
-  const toggleButton = () => {
-    if (btnLabel === "Login") setBtnLabel("Logout");
-    else if (btnLabel === "Logout") setBtnLabel("Login");
-  };
+  // const toggleButton = () => {
+  //   if (btnLabel === "Login") setBtnLabel("Logout");
+  //   else if (btnLabel === "Logout") setBtnLabel("Login");
+  // };
 
   const cartItems = useSelector((store) => store.cart.items);
   const currentLocation = useSelector((store) => store.location.location);
   const dispatch = useDispatch();
+  let cartItemsCount = getNumberOfCartItems(cartItems);
 
   return (
     <div>
@@ -43,28 +49,51 @@ const Header = () => {
         </div>
         <div className="py-5">
           <ul className="text-2xl flex list-none">
-            <li className="p-5 font-semibold text-xl">
-              <Link to="/about">Find</Link>
-            </li>
-            <li className="p-5 font-semibold text-xl">
-              <Link to="/contact">Offers</Link>
-            </li>
-            <li className="p-5 font-semibold text-xl">
-              <Link to="/contact">Help</Link>
+            <li>
+              <Link to="/about">
+                <div className="flex hover:cursor-pointer mx-4 hover:text-orange-500">
+                  <LuSearch className="mt-5 ml-4" />
+                  <button className="py-5 h-12 w-16 font-semibold text-xl">
+                    Find
+                  </button>
+                </div>
+              </Link>
             </li>
             <li>
-              <button
-                className="p-5 h-12 w-24 font-semibold text-xl"
-                onClick={toggleButton}
-              >
-                {btnLabel}
-              </button>
+              <Link to="/contact">
+                <div className="flex hover:cursor-pointer mx-4 hover:text-orange-500">
+                  <BiSolidOffer className="mt-5 ml-4" />
+                  <button className="py-5 h-12 w-16 font-semibold text-xl">
+                    Offers
+                  </button>
+                </div>
+              </Link>
             </li>
-            <li className="p-5 font-semibold text-xl">
+            <li>
+              <Link to="/contact">
+                <div className="flex hover:cursor-pointer mx-4 hover:text-orange-500">
+                  <IoHelpBuoyOutline className="mt-5 ml-4" />
+                  <button className="py-5 h-12 w-16 font-semibold text-xl">
+                    Help
+                  </button>
+                </div>
+              </Link>
+            </li>
+            <li>
+              <div className="flex hover:cursor-pointer mx-4 hover:text-orange-500">
+                <FaRegUser className="mt-5 ml-4" />
+                <button className="py-5 h-12 w-16 font-semibold text-xl">
+                  Login
+                </button>
+              </div>
+            </li>
+            <li>
               <Link to="/cart" data-testid="cart">
-                <div className="flex">
-                  <img alt="cart-img" src={CART_IMG_URL} className="h-7 w-7" />
-                  {getNumberOfCartItems(cartItems)}
+                <div className="flex hover:cursor-pointer mx-4 hover:text-orange-500">
+                  <IoCartOutline className="mt-5 ml-4" />
+                  <button className="py-5 h-12 w-6 font-semibold text-xl">
+                    {cartItemsCount}
+                  </button>
                 </div>
               </Link>
             </li>
