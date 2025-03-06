@@ -12,16 +12,10 @@ import OfflineSection from "./OfflineSection";
 import { useSelector, useDispatch } from "react-redux";
 import { getNumberOfCartItems } from "../../utils/helperFunctions";
 import { openMenu } from "../../redux/slices/locationSlice";
+import { openSidebar } from "../../redux/slices/authSlice";
 
 const Header = () => {
-  // const [btnLabel, setBtnLabel] = useState("Login");
   const isOnline = useOnline();
-
-  // const toggleButton = () => {
-  //   if (btnLabel === "Login") setBtnLabel("Logout");
-  //   else if (btnLabel === "Logout") setBtnLabel("Login");
-  // };
-
   const cartItems = useSelector((store) => store.cart.items);
   const currentLocation = useSelector((store) => store.location.location);
   const dispatch = useDispatch();
@@ -80,7 +74,10 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <div className="flex hover:cursor-pointer mx-4 hover:text-orange-500">
+              <div
+                className="flex hover:cursor-pointer mx-4 hover:text-orange-500"
+                onClick={() => dispatch(openSidebar())}
+              >
                 <FaRegUser className="mt-5 ml-4" />
                 <button className="py-5 h-12 w-16 font-semibold text-xl">
                   Login
