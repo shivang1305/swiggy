@@ -24,6 +24,7 @@
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.17.0",
     "babel-plugin-transform-remove-strict-mode": "^0.0.2",
+    "firebase": "^11.4.0",
     "formik": "^2.4.1",
     "lottie-web": "^5.12.2",
     "parcel": "^2.9.3",
