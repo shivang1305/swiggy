@@ -1,44 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import { FOOD_ICON } from "../../utils/constants";
+import * as Yup from "yup";
+import { useFormik } from "formik";
 
 const Register = ({ setAuthPage }) => {
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [errors, setErrors] = useState("");
+  const validationSchema = Yup.object({
+    phoneNumber: Yup.string()
+      .matches(/^[0-9]{10}$/, "Phone number must be 10 digits")
+      .required("Phone number is required"),
+    name: Yup.string()
+      .min(3, "Name must be at least 3 characters")
+      .required("Name is required"),
+    email: Yup.string()
+      .email("Invalid email format")
+      .required("Email is required"),
+  });
 
-  const validateRegisterForm = () => {
-    let newErrors = {};
-
-    if (!phoneNumber.trim()) {
-      newErrors.phoneNumber = "Phone number is required";
-    } else if (!/^[0-9]{10}$/.test(phoneNumber)) {
-      newErrors.phoneNumber = "Phone number must be 10 digits";
-    }
-
-    if (!name.trim()) {
-      newErrors.name = "Name is required";
-    } else if (name.length < 3) {
-      newErrors.name = "Name must be at least 3 characters";
-    }
-
-    if (!email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      newErrors.email = "Invalid email format";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; // Returns true if no errors
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validateRegisterForm()) {
-      console.log("Form submitted successfully:", { phoneNumber, name, email });
-      // Proceed with API call or next step
-    }
-  };
+  const formik = useFormik({
+    initialValues: { phoneNumber: "", name: "", email: "" },
+    validationSchema,
+    onSubmit: (values) => {
+      console.log("Register form submitted....", values);
+    },
+  });
 
   return (
     <div className="flex flex-col min-h-screen bg-white px-6">
@@ -66,41 +50,45 @@ const Register = ({ setAuthPage }) => {
         </div>
 
         <hr className="border-t-2 border-black w-10 my-4 mx-auto" />
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={formik.handleSubmit}>
           <input
             type="text"
+            name="phoneNumber"
             placeholder="Phone number"
-            value={phoneNumber}
-            onChange={(e) => {
-              setPhoneNumber(e.target.value);
-            }}
+            value={formik.values.phoneNumber}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             className="w-full px-4 py-5 font-semibold text-lg border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
           />
-          {errors.phoneNumber && (
-            <p className="text-red-500 mt-1">{errors.phoneNumber}</p>
+          {formik.touched.phoneNumber && formik.errors.phoneNumber && (
+            <div className="text-red-500 mt-1">{formik.errors.phoneNumber}</div>
           )}
 
           <input
             type="text"
+            name="name"
             placeholder="Name"
-            value={name}
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
+            value={formik.values.name}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             className="w-full px-4 mt-4 py-5 font-semibold text-lg border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
           />
-          {errors.name && <p className="text-red-500 mt-1">{errors.name}</p>}
+          {formik.touched.name && formik.errors.name && (
+            <div className="text-red-500 mt-1">{formik.errors.name}</div>
+          )}
 
           <input
             type="text"
+            name="email"
             placeholder="Email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.email);
-            }}
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             className="w-full px-4 mt-4 py-5 font-semibold text-lg border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
           />
-          {errors.email && <p className="text-red-500 mt-1">{errors.email}</p>}
+          {formik.touched.email && formik.errors.email && (
+            <div className="text-red-500 mt-1">{formik.errors.email}</div>
+          )}
 
           <button className="w-full bg-orange-500 text-white font-semibold py-3 rounded-md mt-4 hover:bg-orange-600 transition">
             CONTINUE
