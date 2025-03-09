@@ -13,9 +13,8 @@ const AuthSidebar = () => {
   const dispatch = useDispatch();
 
   const sidebarClasses = isSidebarOpen
-    ? "absolute z-10 h-full w-1/3 bg-white top-0 right-0 shadow-lg transform translate-x-0 transition-transform duration-300 ease-in-out"
-    : "absolute z-10 h-full w-1/3 bg-white top-0 right-0 shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out";
-
+    ? "fixed z-50 h-full w-1/3 bg-white top-0 right-0 shadow-lg transform translate-x-0 transition-transform duration-300 ease-in-out"
+    : "fixed z-50 h-full w-1/3 bg-white top-0 right-0 shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out";
   return (
     <div className={sidebarClasses}>
       <div className="p-4 border-b border-gray-300">
