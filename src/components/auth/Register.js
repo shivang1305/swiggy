@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { FOOD_ICON } from "../../utils/constants";
 import * as Yup from "yup";
 import { useFormik } from "formik";
+import OtpVerification from "./OtpVerification";
 
 const Register = ({ setAuthPage }) => {
+  const [isOtpScreen, setOtpScreen] = useState(false);
+
   const validationSchema = Yup.object({
     phoneNumber: Yup.string()
       .matches(/^[0-9]{10}$/, "Phone number must be 10 digits")
@@ -21,8 +24,12 @@ const Register = ({ setAuthPage }) => {
     validationSchema,
     onSubmit: (values) => {
       console.log("Register form submitted....", values);
+      setOtpScreen(true);
     },
   });
+
+  if (isOtpScreen)
+    return <OtpVerification phoneNumber={formik.values.phoneNumber} />;
 
   return (
     <div className="flex flex-col min-h-screen bg-white px-6">
@@ -50,6 +57,7 @@ const Register = ({ setAuthPage }) => {
         </div>
 
         <hr className="border-t-2 border-black w-10 my-4 mx-auto" />
+
         <form onSubmit={formik.handleSubmit}>
           <input
             type="text"
@@ -94,6 +102,7 @@ const Register = ({ setAuthPage }) => {
             CONTINUE
           </button>
         </form>
+
         <p className="text-gray-600 text-sm mt-4">
           By creating an account, I accept the{" "}
           <span className="font-bold">Terms & Conditions</span> &{" "}

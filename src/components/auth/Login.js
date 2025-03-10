@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { FOOD_ICON } from "../../utils/constants";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import OtpVerification from "./OtpVerification";
 
 const Login = ({ setAuthPage }) => {
+  const [isOtpScreen, setOtpScreen] = useState(false);
+
   const validationSchema = Yup.object({
     phoneNumber: Yup.string()
       .matches(/^[0-9]{10}$/, "Phone number must be 10 digits")
@@ -15,8 +18,12 @@ const Login = ({ setAuthPage }) => {
     validationSchema,
     onSubmit: (values) => {
       console.log("Login form submitted...", values);
+      setOtpScreen(true);
     },
   });
+
+  if (isOtpScreen)
+    return <OtpVerification phoneNumber={formik.values.phoneNumber} />;
 
   return (
     <div className="flex flex-col min-h-screen bg-white px-6">
