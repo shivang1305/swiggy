@@ -1,12 +1,9 @@
-import React, { useState } from "react";
 import { FOOD_ICON } from "../../utils/constants";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import OtpVerification from "./OtpVerification";
 
-const Login = ({ setAuthPage }) => {
-  const [isOtpScreen, setOtpScreen] = useState(false);
-
+const Login = ({ setAuthPage, isOtpScreen, setOtpScreen }) => {
   const validationSchema = Yup.object({
     phoneNumber: Yup.string()
       .matches(/^[0-9]{10}$/, "Phone number must be 10 digits")
