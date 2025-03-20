@@ -1,11 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FOOD_ICON } from "../../utils/constants";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import OtpVerification from "./OtpVerification";
+import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import { auth } from "../../utils/firebase";
 
 const Register = ({ setAuthPage }) => {
-  const [isOtpScreen, setOtpScreen] = useState(false);
+  const [isOtpSend, setOtpSend] = useState(false);
+  const [confirmationResult, setConfirmationResult] = useState(null);
+
+  useEffect(() => {
+    window.recaptchaVerifier = new RecaptchaVerifier(
+      auth,
+      "recaptcha-container",
+      {
+        size: "invisible",
+        callback: () => {
+          console.log("Recaptcha verified");
+        },
+      }
+    );
+  }, []);
 
   const validationSchema = Yup.object({
     phoneNumber: Yup.string()
@@ -22,14 +38,30 @@ const Register = ({ setAuthPage }) => {
   const formik = useFormik({
     initialValues: { phoneNumber: "", name: "", email: "" },
     validationSchema,
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       console.log("Register form submitted....", values);
-      setOtpScreen(true);
+      const phoneNum = `+91${values.phoneNumber}`;
+      try {
+        const confirmation = await signInWithPhoneNumber(
+          auth,
+          phoneNum,
+          window.recaptchaVerifier
+        );
+        setConfirmationResult(confirmation);
+        setOtpSend(true);
+      } catch (error) {
+        console.log("Error sending otp", error);
+      }
     },
   });
 
-  if (isOtpScreen)
-    return <OtpVerification phoneNumber={formik.values.phoneNumber} />;
+  if (isOtpSend)
+    return (
+      <OtpVerification
+        phoneNumber={formik.values.phoneNumber}
+        confirmationResult={confirmationResult}
+      />
+    );
 
   return (
     <div className="flex flex-col min-h-screen bg-white px-6">
@@ -102,6 +134,8 @@ const Register = ({ setAuthPage }) => {
             CONTINUE
           </button>
         </form>
+
+        <div id="recaptcha-container"></div>
 
         <p className="text-gray-600 text-sm mt-4">
           By creating an account, I accept the{" "}
