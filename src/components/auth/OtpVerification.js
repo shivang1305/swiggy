@@ -7,8 +7,10 @@ const OtpVerification = ({ phoneNumber, confirmationResult }) => {
 
   const handleSubmit = async () => {
     try {
-      await confirmationResult.confirm(otp);
-      console.log("User authtenticated successfully...");
+      const res = await confirmationResult.confirm(otp);
+      console.log(res);
+      if (res) console.log("User authtenticated successfully...");
+      else console.log("Invalid OTP");
     } catch (error) {
       setError("Invalid Otp, please try again");
     }
