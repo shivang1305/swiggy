@@ -39,7 +39,6 @@ const Register = ({ setAuthPage }) => {
     initialValues: { phoneNumber: "", name: "", email: "" },
     validationSchema,
     onSubmit: async (values) => {
-      console.log("Register form submitted....", values);
       const phoneNum = `+91${values.phoneNumber}`;
       try {
         const confirmation = await signInWithPhoneNumber(
