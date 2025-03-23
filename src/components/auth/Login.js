@@ -2,8 +2,12 @@ import { FOOD_ICON } from "../../utils/constants";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import OtpVerification from "./OtpVerification";
+import { signInWithPhoneNumber } from "firebase/auth";
+import { auth } from "../../utils/firebase";
+import { useState } from "react";
 
 const Login = ({ setAuthPage, isOtpScreen, setOtpScreen }) => {
+  const [confirmationResult, setConfirmationResult] = useState(null);
   const validationSchema = Yup.object({
     phoneNumber: Yup.string()
       .matches(/^[0-9]{10}$/, "Phone number must be 10 digits")
@@ -13,14 +17,35 @@ const Login = ({ setAuthPage, isOtpScreen, setOtpScreen }) => {
   const formik = useFormik({
     initialValues: { phoneNumber: "" },
     validationSchema,
-    onSubmit: (values) => {
-      console.log("Login form submitted...", values);
+    onSubmit: async (values) => {
+      // Setup Recaptcha
+      window.recaptchaVerifier = new RecaptchaVerifier(
+        auth,
+        "recaptcha-container",
+        {
+          size: "invisible",
+          callback: () => {
+            console.log("Recaptcha verified");
+          },
+        }
+      );
+
+      const confirmation = await signInWithPhoneNumber(
+        auth,
+        `+91${values.phoneNumber}`
+      );
+      setConfirmationResult(confirmation);
       setOtpScreen(true);
     },
   });
 
   if (isOtpScreen)
-    return <OtpVerification phoneNumber={formik.values.phoneNumber} />;
+    return (
+      <OtpVerification
+        data={formik.values}
+        confirmationResult={confirmationResult}
+      />
+    );
 
   return (
     <div className="flex flex-col min-h-screen bg-white px-6">
