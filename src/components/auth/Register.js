@@ -57,7 +57,7 @@ const Register = ({ setAuthPage }) => {
   if (isOtpSend)
     return (
       <OtpVerification
-        phoneNumber={formik.values.phoneNumber}
+        data={formik.values}
         confirmationResult={confirmationResult}
       />
     );
