@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { FOOD_ICON } from "../../utils/constants";
+import { updateProfile } from "firebase/auth";
 
-const OtpVerification = ({ phoneNumber, confirmationResult }) => {
+const OtpVerification = ({ data, confirmationResult }) => {
+  const { name, email, phoneNumber } = data;
   const [otp, setOtp] = useState("");
   const [error, setError] = useState(null);
 
@@ -9,9 +11,14 @@ const OtpVerification = ({ phoneNumber, confirmationResult }) => {
     e.preventDefault();
     try {
       const res = await confirmationResult.confirm(otp);
-      console.log(res);
-      if (res) console.log("User authtenticated successfully...");
-      else console.log("Invalid OTP");
+      const user = res.user;
+
+      await updateProfile(user, {
+        displayName: name,
+        email: email,
+      });
+
+      console.log("User signed in: ", user);
     } catch (error) {
       setError("Invalid Otp, please try again");
     }
