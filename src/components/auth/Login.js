@@ -1,13 +1,28 @@
-import { FOOD_ICON } from "../../utils/constants";
+import { useEffect, useState } from "react";
+import { auth } from "../../utils/firebase";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { FOOD_ICON } from "../../utils/constants";
 import OtpVerification from "./OtpVerification";
-import { signInWithPhoneNumber } from "firebase/auth";
-import { auth } from "../../utils/firebase";
-import { useState } from "react";
+import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 
-const Login = ({ setAuthPage, isOtpScreen, setOtpScreen }) => {
+const Login = ({ setAuthPage }) => {
   const [confirmationResult, setConfirmationResult] = useState(null);
+  const [isOtpScreen, setOtpScreen] = useState(false);
+
+  useEffect(() => {
+    window.recaptchaVerifier = new RecaptchaVerifier(
+      auth,
+      "recaptcha-container",
+      {
+        size: "invisible",
+        callback: () => {
+          console.log("Recaptcha verified");
+        },
+      }
+    );
+  }, []);
+
   const validationSchema = Yup.object({
     phoneNumber: Yup.string()
       .matches(/^[0-9]{10}$/, "Phone number must be 10 digits")
@@ -18,21 +33,11 @@ const Login = ({ setAuthPage, isOtpScreen, setOtpScreen }) => {
     initialValues: { phoneNumber: "" },
     validationSchema,
     onSubmit: async (values) => {
-      // Setup Recaptcha
-      window.recaptchaVerifier = new RecaptchaVerifier(
-        auth,
-        "recaptcha-container",
-        {
-          size: "invisible",
-          callback: () => {
-            console.log("Recaptcha verified");
-          },
-        }
-      );
-
+      const phoneNum = `+91${values.phoneNumber}`;
       const confirmation = await signInWithPhoneNumber(
         auth,
-        `+91${values.phoneNumber}`
+        phoneNum,
+        window.recaptchaVerifier
       );
       setConfirmationResult(confirmation);
       setOtpScreen(true);
@@ -44,6 +49,7 @@ const Login = ({ setAuthPage, isOtpScreen, setOtpScreen }) => {
       <OtpVerification
         data={formik.values}
         confirmationResult={confirmationResult}
+        source="login"
       />
     );
 
@@ -93,6 +99,7 @@ const Login = ({ setAuthPage, isOtpScreen, setOtpScreen }) => {
             LOGIN
           </button>
         </form>
+        <div id="recaptcha-container"></div>
         <p className="text-gray-600 text-sm mt-4">
           By clicking on Login, I accept the{" "}
           <span className="font-bold">Terms & Conditions</span> &{" "}
