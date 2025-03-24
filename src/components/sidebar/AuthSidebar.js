@@ -6,7 +6,6 @@ import Register from "../auth/Register";
 
 const AuthSidebar = () => {
   const [authPage, setAuthPage] = useState("login");
-  const [isOtpScreen, setOtpScreen] = useState(false);
   const isSidebarOpen = useSelector(
     (store) => store.authentication.isSidebarOpen
   );
@@ -24,7 +23,6 @@ const AuthSidebar = () => {
           onClick={() => {
             dispatch(closeSidebar());
             setAuthPage("login");
-            setOtpScreen(false);
           }}
           className="text-gray-500 hover:text-gray-700"
         >
@@ -43,11 +41,7 @@ const AuthSidebar = () => {
         </button>
       </div>
       {authPage === "login" ? (
-        <Login
-          setAuthPage={setAuthPage}
-          isOtpScreen={isOtpScreen}
-          setOtpScreen={setOtpScreen}
-        />
+        <Login setAuthPage={setAuthPage} />
       ) : (
         <Register setAuthPage={setAuthPage} />
       )}
