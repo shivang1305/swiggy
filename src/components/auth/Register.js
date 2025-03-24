@@ -59,6 +59,7 @@ const Register = ({ setAuthPage }) => {
       <OtpVerification
         data={formik.values}
         confirmationResult={confirmationResult}
+        source="register"
       />
     );
 

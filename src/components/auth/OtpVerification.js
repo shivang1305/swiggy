@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { FOOD_ICON } from "../../utils/constants";
 import { updateProfile } from "firebase/auth";
 
-const OtpVerification = ({ data, confirmationResult }) => {
-  const { name, email, phoneNumber } = data;
+const OtpVerification = ({ data, confirmationResult, source }) => {
   const [otp, setOtp] = useState("");
   const [error, setError] = useState(null);
 
@@ -13,10 +12,12 @@ const OtpVerification = ({ data, confirmationResult }) => {
       const res = await confirmationResult.confirm(otp);
       const user = res.user;
 
-      await updateProfile(user, {
-        displayName: name,
-        email: email,
-      });
+      if (source === "register") {
+        await updateProfile(user, {
+          displayName: data.name,
+          email: data.email,
+        });
+      }
 
       console.log("User signed in: ", user);
     } catch (error) {
@@ -50,7 +51,7 @@ const OtpVerification = ({ data, confirmationResult }) => {
             type="text"
             name="phoneNumber"
             placeholder="Phone number"
-            value={phoneNumber}
+            value={data.phoneNumber}
             disabled
             className="w-full px-4 py-5 font-semibold text-lg border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
           />
