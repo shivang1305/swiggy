@@ -5,6 +5,7 @@ import { updateProfile } from "firebase/auth";
 const OtpVerification = ({ data, confirmationResult, source }) => {
   const [otp, setOtp] = useState("");
   const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,6 +21,7 @@ const OtpVerification = ({ data, confirmationResult, source }) => {
       }
 
       console.log("User signed in: ", user);
+      setSuccess("User signed in sucessfully....");
     } catch (error) {
       setError("Invalid Otp, please try again");
     }
@@ -67,6 +69,7 @@ const OtpVerification = ({ data, confirmationResult, source }) => {
             VERIFY OTP
           </button>
           {error && <p className="text-red-500">{error}</p>}
+          {success && <p className="text-green-500">{success}</p>}
         </form>
       </div>
     </div>
