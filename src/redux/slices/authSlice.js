@@ -16,8 +16,12 @@ const authSlice = createSlice({
     setUser: (state, action) => {
       state.user = action.payload;
     },
+    removeUser: (state) => {
+      state.user = null;
+    },
   },
 });
 
-export const { openSidebar, closeSidebar, setUser } = authSlice.actions;
+export const { openSidebar, closeSidebar, setUser, removeUser } =
+  authSlice.actions;
 export default authSlice.reducer;
