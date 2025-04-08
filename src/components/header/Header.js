@@ -15,6 +15,8 @@ import { openSidebar, removeUser, setUser } from "../../redux/slices/authSlice";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../utils/firebase";
+import LoggedInUser from "./LoggedInUser";
+import LoginHeader from "./LoginHeader";
 
 const Header = () => {
   const isOnline = useOnline();
@@ -86,17 +88,7 @@ const Header = () => {
                 </div>
               </Link>
             </li>
-            <li>
-              <div
-                className="flex hover:cursor-pointer mx-4 hover:text-orange-500"
-                onClick={() => dispatch(openSidebar())}
-              >
-                <FaRegUser className="mt-5 ml-4" />
-                <button className="py-5 h-12 w-16 font-semibold text-xl ml-2">
-                  {user ? getUserName(user?.displayName) : "Login"}
-                </button>
-              </div>
-            </li>
+            <li>{user ? <LoggedInUser user={user} /> : <LoginHeader />}</li>
             <li>
               <Link to="/cart" data-testid="cart">
                 <div className="flex hover:cursor-pointer mx-4 hover:text-orange-500">
