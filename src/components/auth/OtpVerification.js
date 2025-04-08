@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { FOOD_ICON } from "../../utils/constants";
 import { updateProfile } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { closeSidebar, setUser } from "../../redux/slices/authSlice";
 
 const OtpVerification = ({ data, confirmationResult, source }) => {
   const [otp, setOtp] = useState("");
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,6 +26,9 @@ const OtpVerification = ({ data, confirmationResult, source }) => {
 
       console.log("User signed in: ", user);
       setSuccess("User signed in sucessfully....");
+
+      dispatch(closeSidebar());
+      dispatch(setUser(user));
     } catch (error) {
       setError("Invalid Otp, please try again");
     }
