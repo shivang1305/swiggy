@@ -9,9 +9,12 @@ import useOnline from "../../hooks/useOnline";
 import OnlineSection from "./OnlineSection";
 import OfflineSection from "./OfflineSection";
 import { useDispatch, useSelector } from "react-redux";
-import { getNumberOfCartItems } from "../../utils/helperFunctions";
+import { getNumberOfCartItems, getUserName } from "../../utils/helperFunctions";
 import { openMenu } from "../../redux/slices/locationSlice";
-import { openSidebar } from "../../redux/slices/authSlice";
+import { openSidebar, removeUser, setUser } from "../../redux/slices/authSlice";
+import { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../utils/firebase";
 
 const Header = () => {
   const isOnline = useOnline();
@@ -22,6 +25,14 @@ const Header = () => {
 
   const dispatch = useDispatch();
   let cartItemsCount = getNumberOfCartItems(cartItems);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(setUser(user));
+      } else dispatch(removeUser());
+    });
+  }, []);
 
   return (
     <div>
@@ -81,8 +92,8 @@ const Header = () => {
                 onClick={() => dispatch(openSidebar())}
               >
                 <FaRegUser className="mt-5 ml-4" />
-                <button className="py-5 h-12 w-16 font-semibold text-xl">
-                  {user ? user?.displayName : "Login"}
+                <button className="py-5 h-12 w-16 font-semibold text-xl ml-2">
+                  {user ? getUserName(user?.displayName) : "Login"}
                 </button>
               </div>
             </li>
