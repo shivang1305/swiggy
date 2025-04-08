@@ -1,23 +1,25 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa";
 import { LuSearch } from "react-icons/lu";
 import { BiSolidOffer } from "react-icons/bi";
 import { IoHelpBuoyOutline } from "react-icons/io5";
 import { IoCartOutline } from "react-icons/io5";
-import { CART_IMG_URL, LOGO_URL } from "../../utils/constants";
+import { LOGO_URL } from "../../utils/constants";
 import useOnline from "../../hooks/useOnline";
 import OnlineSection from "./OnlineSection";
 import OfflineSection from "./OfflineSection";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getNumberOfCartItems } from "../../utils/helperFunctions";
 import { openMenu } from "../../redux/slices/locationSlice";
 import { openSidebar } from "../../redux/slices/authSlice";
 
 const Header = () => {
   const isOnline = useOnline();
+
   const cartItems = useSelector((store) => store.cart.items);
   const currentLocation = useSelector((store) => store.location.location);
+  const user = useSelector((store) => store.authentication.user);
+
   const dispatch = useDispatch();
   let cartItemsCount = getNumberOfCartItems(cartItems);
 
@@ -80,7 +82,7 @@ const Header = () => {
               >
                 <FaRegUser className="mt-5 ml-4" />
                 <button className="py-5 h-12 w-16 font-semibold text-xl">
-                  Login
+                  {user ? user?.displayName : "Login"}
                 </button>
               </div>
             </li>
