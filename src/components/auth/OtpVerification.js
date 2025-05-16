@@ -1,18 +1,29 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FOOD_ICON } from "../../utils/constants";
 import { updateProfile } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { closeSidebar, setUser } from "../../redux/slices/authSlice";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "../../utils/firebase";
 
 const OtpVerification = ({ data, confirmationResult, source }) => {
   const [otp, setOtp] = useState("");
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!otp || otp.length < 6) {
+      setError("Please enter a valid 6-digit OTP");
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+
     try {
       const res = await confirmationResult.confirm(otp);
       const user = res.user;
@@ -22,15 +33,34 @@ const OtpVerification = ({ data, confirmationResult, source }) => {
           displayName: data.name,
           email: data.email,
         });
+
+        await setDoc(doc(db, "users", user.uid), {
+          uid: user.uid,
+          phoneNumber: user.phoneNumber,
+          name: data.name,
+          email: data.email,
+          created_at: serverTimestamp(),
+        });
       }
 
       console.log("User signed in: ", user);
-      setSuccess("User signed in sucessfully....");
+      setSuccess("User signed in successfully....");
 
       dispatch(closeSidebar());
-      dispatch(setUser(user));
+
+      let filteredUserData = {
+        uid: user.uid,
+        phoneNumber: user.phoneNumber,
+        displayName: user.displayName || "",
+        email: user.email || "",
+      };
+
+      dispatch(setUser(filteredUserData));
     } catch (error) {
-      setError("Invalid Otp, please try again");
+      console.error("OTP verification error:", error);
+      setError(error.message || "Invalid OTP, please try again");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -55,6 +85,17 @@ const OtpVerification = ({ data, confirmationResult, source }) => {
 
         <hr className="border-t-2 border-black w-10 my-4 mx-auto" />
 
+        {error && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            {error}
+          </div>
+        )}
+        {success && (
+          <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+            {success}
+          </div>
+        )}
+
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -70,13 +111,17 @@ const OtpVerification = ({ data, confirmationResult, source }) => {
             value={otp}
             onChange={(e) => setOtp(e.target.value)}
             placeholder="One time password"
+            maxLength={6}
             className="w-full px-4 py-5 mt-4 font-semibold text-lg border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
           />
-          <button className="w-full bg-orange-500 text-white font-semibold py-3 rounded-md mt-4 hover:bg-orange-600 transition">
-            VERIFY OTP
+          <button
+            className={`w-full text-white font-semibold py-3 rounded-md mt-4 transition ${
+              loading ? "bg-gray-400" : "bg-orange-500 hover:bg-orange-600"
+            }`}
+            disabled={loading}
+          >
+            {loading ? "VERIFYING..." : "VERIFY OTP"}
           </button>
-          {error && <p className="text-red-500">{error}</p>}
-          {success && <p className="text-green-500">{success}</p>}
         </form>
       </div>
     </div>

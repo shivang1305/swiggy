@@ -19,6 +19,9 @@ const Register = ({ setAuthPage }) => {
         callback: () => {
           console.log("Recaptcha verified");
         },
+        "expired-callback": () => {
+          console.warn("reCAPTCHA expired. Please retry.");
+        },
       }
     );
   }, []);

@@ -9,8 +9,16 @@ import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 const Login = ({ setAuthPage }) => {
   const [confirmationResult, setConfirmationResult] = useState(null);
   const [isOtpScreen, setOtpScreen] = useState(false);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    // Clear any existing reCAPTCHA to avoid duplicates
+    if (window.recaptchaVerifier) {
+      window.recaptchaVerifier.clear();
+    }
+
+    // Create a new reCAPTCHA verifier
     window.recaptchaVerifier = new RecaptchaVerifier(
       auth,
       "recaptcha-container",
@@ -19,8 +27,20 @@ const Login = ({ setAuthPage }) => {
         callback: () => {
           console.log("Recaptcha verified");
         },
+        "expired-callback": () => {
+          console.warn("reCAPTCHA expired. Please retry.");
+          setError("reCAPTCHA expired. Please try again.");
+          setLoading(false);
+        },
       }
     );
+
+    // Cleanup function to clear reCAPTCHA when component unmounts
+    return () => {
+      if (window.recaptchaVerifier) {
+        window.recaptchaVerifier.clear();
+      }
+    };
   }, []);
 
   const validationSchema = Yup.object({
@@ -33,14 +53,49 @@ const Login = ({ setAuthPage }) => {
     initialValues: { phoneNumber: "" },
     validationSchema,
     onSubmit: async (values) => {
-      const phoneNum = `+91${values.phoneNumber}`;
-      const confirmation = await signInWithPhoneNumber(
-        auth,
-        phoneNum,
-        window.recaptchaVerifier
-      );
-      setConfirmationResult(confirmation);
-      setOtpScreen(true);
+      try {
+        setError(null);
+        setLoading(true);
+
+        // Ensure reCAPTCHA is ready
+        if (!window.recaptchaVerifier) {
+          throw new Error("reCAPTCHA not initialized properly");
+        }
+
+        const phoneNum = `+91${values.phoneNumber}`;
+        console.log("Sending OTP to:", phoneNum);
+
+        const confirmation = await signInWithPhoneNumber(
+          auth,
+          phoneNum,
+          window.recaptchaVerifier
+        );
+
+        setConfirmationResult(confirmation);
+        setOtpScreen(true);
+        setLoading(false);
+      } catch (err) {
+        console.error("Firebase authentication error:", err);
+        setError(err.message || "Failed to send OTP. Please try again.");
+        setLoading(false);
+
+        // Reset reCAPTCHA on error
+        if (window.recaptchaVerifier) {
+          window.recaptchaVerifier.clear();
+
+          // Re-initialize reCAPTCHA
+          window.recaptchaVerifier = new RecaptchaVerifier(
+            auth,
+            "recaptcha-container",
+            {
+              size: "invisible",
+              callback: () => {
+                console.log("Recaptcha re-verified");
+              },
+            }
+          );
+        }
+      }
     },
   });
 
@@ -79,6 +134,11 @@ const Login = ({ setAuthPage }) => {
         </div>
 
         <hr className="border-t-2 border-black w-10 my-4 mx-auto" />
+        {error && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            {error}
+          </div>
+        )}
         <form onSubmit={formik.handleSubmit}>
           <input
             type="text"
@@ -94,12 +154,15 @@ const Login = ({ setAuthPage }) => {
           )}
           <button
             type="submit"
-            className="w-full bg-orange-500 text-white font-semibold py-3 rounded-md mt-4 hover:bg-orange-600 transition"
+            disabled={loading}
+            className={`w-full text-white font-semibold py-3 rounded-md mt-4 transition ${
+              loading ? "bg-gray-400" : "bg-orange-500 hover:bg-orange-600"
+            }`}
           >
-            LOGIN
+            {loading ? "SENDING OTP..." : "LOGIN"}
           </button>
         </form>
-        <div id="recaptcha-container"></div>
+        <div id="recaptcha-container" className="mt-4"></div>
         <p className="text-gray-600 text-sm mt-4">
           By clicking on Login, I accept the{" "}
           <span className="font-bold">Terms & Conditions</span> &{" "}
