@@ -1,13 +1,14 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  apiKey: "AIzaSyCGOef4PIijuNpeIU13q4kKArpol7BM7zc", // Replace with your actual Firebase API key
   authDomain: "swiggy-d58a6.firebaseapp.com",
   projectId: "swiggy-d58a6",
   storageBucket: "swiggy-d58a6.firebasestorage.app",
@@ -19,6 +20,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-auth.languageCode = "it";
+auth.languageCode = "en";
+const db = getFirestore(app);
 
-export { auth };
+export { auth, db };
