@@ -117,6 +117,7 @@ export const getDiscountHeading = (aggregatedDiscountInfoV3) => {
 
 // to get the trucated firstname only to show in header
 export const getUserName = (name) => {
+  if (!name) return;
   let firstname = name.split(" ")[0];
 
   if (firstname.length > 8) firstname = firstname.slice(0, 7);
