@@ -9,9 +9,9 @@ import useOnline from "../../hooks/useOnline";
 import OnlineSection from "./OnlineSection";
 import OfflineSection from "./OfflineSection";
 import { useDispatch, useSelector } from "react-redux";
-import { getNumberOfCartItems, getUserName } from "../../utils/helperFunctions";
+import { getNumberOfCartItems } from "../../utils/helperFunctions";
 import { openMenu } from "../../redux/slices/locationSlice";
-import { openSidebar, removeUser, setUser } from "../../redux/slices/authSlice";
+import { removeUser, setUser } from "../../redux/slices/authSlice";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../utils/firebase";
@@ -31,7 +31,13 @@ const Header = () => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        dispatch(setUser(user));
+        const filteredUserData = {
+          uid: user.uid,
+          phoneNumber: user?.phoneNumber,
+          displayName: user?.displayName || "",
+          email: user?.email || "",
+        };
+        dispatch(setUser(filteredUserData));
       } else dispatch(removeUser());
     });
   }, []);
