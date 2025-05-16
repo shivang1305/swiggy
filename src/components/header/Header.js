@@ -13,7 +13,7 @@ import { getNumberOfCartItems } from "../../utils/helperFunctions";
 import { openMenu } from "../../redux/slices/locationSlice";
 import { removeUser, setUser } from "../../redux/slices/authSlice";
 import { useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../utils/firebase";
 import LoggedInUser from "./LoggedInUser";
 import LoginHeader from "./LoginHeader";
@@ -94,7 +94,17 @@ const Header = () => {
                 </div>
               </Link>
             </li>
-            <li>{user ? <LoggedInUser user={user} /> : <LoginHeader />}</li>
+            <li>
+              {user ? (
+                <LoggedInUser
+                  user={user}
+                  onProfile={() => navigate("/about")}
+                  onLogout={() => signOut(auth)}
+                />
+              ) : (
+                <LoginHeader />
+              )}
+            </li>
             <li>
               <Link to="/cart" data-testid="cart">
                 <div className="flex hover:cursor-pointer mx-4 hover:text-orange-500">
