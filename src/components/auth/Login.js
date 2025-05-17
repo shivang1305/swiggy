@@ -99,6 +99,15 @@ const Login = ({ setAuthPage }) => {
     },
   });
 
+  // Handler for phone number input to allow only numbers
+  const handlePhoneNumberChange = (e) => {
+    const value = e.target.value;
+    // Only update if input is empty or consists of only numbers
+    if (value === "" || /^[0-9]+$/.test(value)) {
+      formik.handleChange(e);
+    }
+  };
+
   if (isOtpScreen)
     return (
       <OtpVerification
@@ -141,12 +150,15 @@ const Login = ({ setAuthPage }) => {
         )}
         <form onSubmit={formik.handleSubmit}>
           <input
-            type="text"
+            type="tel"
             name="phoneNumber"
             placeholder="Phone number"
             value={formik.values.phoneNumber}
-            onChange={formik.handleChange}
+            onChange={handlePhoneNumberChange}
             onBlur={formik.handleBlur}
+            maxLength={10}
+            pattern="[0-9]*"
+            inputMode="numeric"
             className="w-full px-4 py-5 font-semibold text-lg border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
           />
           {formik.touched.phoneNumber && formik.errors.phoneNumber && (
